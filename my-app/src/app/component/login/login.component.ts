@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/core/services/user.service';
 //import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -14,12 +15,11 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   hide = true;
-  REGEX_EMAILID="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
-  REGEX_PASSWORD="^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])[a-zA-Z0-9@#$%^&+=]*$";
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private userService: UserService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-  
+
 
   get f() { return this.loginForm.controls; }
 
@@ -39,5 +39,15 @@ export class LoginComponent implements OnInit {
       return;
     }
     console.log(user);
+    this.userService.login(user).subscribe(response => {
+      console.log("Logged in");
+      localStorage.setItem('token', response.headers.get('token'));
+      this.router.navigate(['home'])
+        
+    },
+      (error) => {
+        console.log(error);
+      });
+
   }
 }

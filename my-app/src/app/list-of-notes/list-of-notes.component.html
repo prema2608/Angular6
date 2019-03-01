@@ -1,0 +1,44 @@
+<div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+  <div fxFlex="80%">
+<!-- <app-create-note></app-create-note> -->
+</div>
+
+<div *ngFor="let notes of notes">
+<mat-card>
+  <mat-card-header>
+    <mat-card-title (click)= openDialog(notes)>
+
+      {{notes.title}}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content (click)= openDialog(notes)>
+    {{notes.description}}
+  </mat-card-content>
+  <div>
+    <button mat-icon-button matTooltip="Remind me">
+      <mat-icon>add_alert</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Collaborator">
+      <mat-icon>person_add</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Change color">
+      <mat-icon>palette</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Add image">
+      <mat-icon>image</mat-icon>
+    </button>
+    <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="more" matTooltip="more">
+        <i id="accountcircle" class="material-icons">more_vert</i></button>
+        <mat-menu #more="matMenu" class="morecard">
+            <button mat-button (click)=deleteNote(notes)>Delete Note</button>
+          </mat-menu>
+    <button mat-icon-button matTooltip="undo">
+      <mat-icon>undo</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="redo">
+      <mat-icon>redo</mat-icon>
+    </button>
+  </div>
+</mat-card>
+</div>
+</div>

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url:'http://localhost:8080/MyFunDooNote/'
+  url:'http://localhost:8082/user/',
+  noteurl:'http://localhost:8083/note/'
 };
 
 /*

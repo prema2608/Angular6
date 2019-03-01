@@ -5,9 +5,17 @@ import { MatInputModule,  _MatIconMixinBase, MatButtonModule, MatIconModule} fro
 import {MatFormFieldModule} from '@angular/material/form-field';
 import  {MatCardModule} from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { HttpClientModule } from '@angular/common/http';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatMenuModule} from '@angular/material/menu';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatChipsModule} from '@angular/material/chips';
+import { MatDialogModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -24,7 +32,16 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatDividerModule,
+    MatListModule,
+    MatExpansionModule,
+    MatSnackBarModule,
+    MatChipsModule,
+    MatDialogModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -35,7 +52,16 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatIconModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatDividerModule,
+    MatListModule,
+    MatExpansionModule,
+    MatSnackBarModule,
+    MatChipsModule,
+    MatDialogModule
   ],
   
 
