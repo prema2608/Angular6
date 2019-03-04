@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/core/services/user.service';
-//import { UserService } from 'src/app/core/services/user.service';
+
 
 @Component({
   selector: 'app-login',
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
 
-  onSubmit(user) {
+ public onSubmit(user) {
     this.submitted = true;
     // stop here if form is invalid
     if (this.loginForm.invalid) {

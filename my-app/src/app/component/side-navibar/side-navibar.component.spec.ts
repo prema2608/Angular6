@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpgradeNoteComponent } from './upgrade-note.component';
+import { SideNavibarComponent } from './side-navibar.component';
 
-describe('UpgradeNoteComponent', () => {
-  let component: UpgradeNoteComponent;
-  let fixture: ComponentFixture<UpgradeNoteComponent>;
+describe('SideNavibarComponent', () => {
+  let component: SideNavibarComponent;
+  let fixture: ComponentFixture<SideNavibarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpgradeNoteComponent ]
+      declarations: [ SideNavibarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UpgradeNoteComponent);
+    fixture = TestBed.createComponent(SideNavibarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

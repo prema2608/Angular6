@@ -1,15 +1,4 @@
-mat-sidenav-container, mat-sidenav-content, mat-sidenav {
-    height: 100%;
-}
- 
-mat-sidenav {
-    width: 20%;
-    height: 100%;
-}
- 
-main {
-    padding: 10px;
-}
+
 
 /* padding left and right is for search and reset icons */
 .slinput input {

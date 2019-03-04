@@ -11,7 +11,9 @@ export class HttpService {
   postService(url,object){
     return this.http.post<any>(url,object,{observe:"response"});
   }
-
+  postHeaderService(url,object,header){
+    return this.http.post<any>(url,object,header);
+  }
   putService(url,object,header){
     return this.http.put<any>(url,object,header);
   }
