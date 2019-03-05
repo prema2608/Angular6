@@ -31,9 +31,9 @@
         <span>Archive</span>
       </button>
       <!-- delete -->
-      <button mat-menu-item>
-        <mat-icon>delete</mat-icon>
-        <span>Trash</span>
+      <button mat-menu-item (click)="navigation(trash)">
+        <mat-icon>delete </mat-icon>
+        <span>Trash </span>
       </button>
 
     </mat-nav-list>
@@ -42,7 +42,7 @@
   <mat-sidenav-content>
     
 
-        <app-create-note></app-create-note>
+      <router-outlet></router-outlet>
 
    
   </mat-sidenav-content>

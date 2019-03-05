@@ -6,9 +6,11 @@ import { LoginComponent } from './component/login/login.component';
 import { RegistrationComponent } from './component/registration/registration.component';
 import { AppMaterialModule} from './app.material.module';
 import { HomeComponent } from 'src/app/component/home/home.component';
-import { ListOfNotesComponent } from './list-of-notes/list-of-notes.component';
 import{CreateNoteComponent} from 'src/app/component/create-note/create-note.component';
 import{ SideNavibarComponent } from './component/side-navibar/side-navibar.component';
+import { ListOfNotesComponent } from './component/list-of-notes/list-of-notes.component';
+import { UpdateNoteComponent } from './component/update-note/update-note.component';
+import { TrashNoteComponent } from './component/trash-note/trash-note.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import{ SideNavibarComponent } from './component/side-navibar/side-navibar.compo
     HomeComponent,
     ListOfNotesComponent,
     CreateNoteComponent,
-    SideNavibarComponent
+    SideNavibarComponent,
+    UpdateNoteComponent,
+    TrashNoteComponent
    
 
   ],
@@ -27,7 +31,7 @@ import{ SideNavibarComponent } from './component/side-navibar/side-navibar.compo
     AppRoutingModule,
     AppMaterialModule
   ],
-  
+  entryComponents:[UpdateNoteComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

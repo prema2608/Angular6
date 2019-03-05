@@ -1,0 +1,55 @@
+<div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+  <div fxFlex="80%">
+    <!-- <app-create-note></app-create-note> -->
+  </div>
+
+  <div *ngFor="let notes of notes">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title (click)=openDialog(notes)>
+          {{notes.title}}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content (click)=openDialog(notes)>
+        {{notes.description}}
+      </mat-card-content>
+      <mat-toolbar-row>
+        <div>
+          <a mat-button routerLinkActive="active" matTooltip="Remind me" title="Remind me">
+            <mat-icon>notification_important</mat-icon>
+          </a>
+        </div>
+
+        <div style="position:relative;display:block">
+          <a mat-button routerLinkActive="active" matTooltip="Collaborator" title="Collaborator">
+            <mat-icon>person_add</mat-icon>
+          </a>
+        </div>
+
+        <div style="position:relative;display:block">
+          <a mat-button routerLinkActive="active" matTooltip="Change color" title="Change color">
+            <mat-icon>color_lens</mat-icon>
+          </a>
+        </div>
+        <div style="position:relative;display:block">
+          <a mat-button routerLinkActive="active" matTooltip="Add image" title="Add image">
+            <mat-icon>photo</mat-icon>
+          </a>
+        </div>
+
+        <div style="position:relative;display:block">
+          <a mat-button routerLinkActive="active" matTooltip="archive" title="archive">
+            <mat-icon>archive</mat-icon>
+          </a>
+        </div>
+
+        <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="more" matTooltip="more" title="more">
+          <i id="accountcircle" class="material-icons">more_vert</i></button>
+        <mat-menu #more="matMenu" class="morecard">
+          <button mat-button (click)=deleteNote(notes.noteId)>Delete Note</button>
+        </mat-menu>
+      </mat-toolbar-row>
+
+    </mat-card>
+  </div>
+</div>

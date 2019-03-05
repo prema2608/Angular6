@@ -1,21 +1,40 @@
-<div>
+<div fxLayout="row" fxLayoutAlign="center center">
   <form [formGroup]="createNote">
-    <mat-accordion>
-      <mat-expansion-panel>
+    <mat-accordion class="mat-accordion">
+      <mat-expansion-panel [expanded]=true (opened)="showHeader = false" (closed)="onSubmit(createNote.value)"
+        (closed)="showHeader = true" hideToggle="true">
         <mat-expansion-panel-header>
-          <mat-panel-title>
-            Take a note...
-          </mat-panel-title>
+          <ng-container *ngIf="showHeader;else tempTtext">
+              <mat-toolbar-row>
+            <mat-panel-title>
+              Take a note..
+              </mat-panel-title>
+              <mat-panel-title>
+              <div style="text-align:right; width:100%;">
+                <button mat-icon-button matTooltip="new list" title="new list">
+                  <mat-icon>check_box</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="new note with image" title="new note with image">
+                  <mat-icon>image</mat-icon>
+                </button>
+              </div>
+            </mat-panel-title>
+            </mat-toolbar-row>
+          </ng-container>
+          <ng-template #tempTtext>
 
+          </ng-template>
         </mat-expansion-panel-header>
         <mat-panel-description>
-          <input  placeholder="Title" formControlName="title">
+          <input matInput class="note" placeholder="Title" formControlName="title"
+            [ngClass]="{ 'is-invalid': submitted && f.title.errors }" style="width: 500 px;">
+         <img src="./assets/images/pin.jpg" title="pin note">
+          
         </mat-panel-description>
-
         <mat-panel-description>
-          <input placeholder="Take a note..." formControlName="description">
+          <textarea matInput class="note" placeholder="Take a note.." formControlName="description"
+            [ngClass]="{ 'is-invalid': submitted && f.description.errors }" style="width: 500px;"></textarea>
         </mat-panel-description>
-
         <mat-toolbar-row>
           <div>
             <a mat-button routerLinkActive="active" matTooltip="Remind me" title="Remind me">
@@ -41,10 +60,392 @@
           </div>
 
           <div style="position:relative;display:block">
-            <a mat-button routerLinkActive="active" matTooltip="Archive" title="Archive">
-              <mat-icon>archive</mat-icon>
+              <a mat-button routerLinkActive="active" matTooltip="archive" title="archive">
+                <mat-icon>archive</mat-icon>
+              </a>
+            </div>
+  
+            <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="more" matTooltip="more" title="more">
+                <i id="accountcircle" class="material-icons">more_vert</i></button>
+              <mat-menu #more="matMenu" class="morecard">
+                <button mat-button (click)=deleteNote(notes)>Delete Note</button>
+              </mat-menu>
+
+          <div style="position:relative;display:block">
+            <a mat-button routerLinkActive="active" matTooltip="undo" title="undo">
+              <mat-icon>undo</mat-icon>
             </a>
           </div>
+          <div style="position:relative;display:block">
+            <a mat-button routerLinkActive="active" matTooltip="redo" title="redo">
+              <mat-icon>redo</mat-icon>
+            </a>
+          </div>
+          <button mat-button (click)="showHeader=true">
+            <span>close</span>
+          </button>
+        </mat-toolbar-row>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </form>
+</div>
+<div>
+  <app-list-of-notes></app-list-of-notes>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+  <form [formGroup]="createNote" >
+        <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Take a note...
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-panel-description>
+                    <input matInput placeholder="Title" formControlName="title" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+
+                  </mat-panel-description>
+
+
+        <mat-panel-description>
+            <input matInput placeholder="Take a note..." formControlName="description" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+
+          </mat-panel-description>
+
+        <mat-toolbar-row>
+          <div>
+            <a mat-button routerLinkActive="active" matTooltip="Remind me" title="Remind me">
+              <mat-icon>notification_important</mat-icon>
+            </a>
+          </div>
+
+          <div style="position:relative;display:block">
+            <a mat-button routerLinkActive="active" matTooltip="Collaborator" title="Collaborator">
+              <mat-icon>person_add</mat-icon>
+            </a>
+          </div>    
+
+          <div style="position:relative;display:block">
+            <a mat-button routerLinkActive="active" matTooltip="Change color" title="Change color">
+              <mat-icon>color_lens</mat-icon>
+            </a>
+          </div>
+          <div style="position:relative;display:block">
+            <a mat-button routerLinkActive="active" matTooltip="Add image" title="Add image">
+              <mat-icon>photo</mat-icon>
+            </a>
+          </div>
+
+         
           <div style="position:relative;display:block">
             <a mat-button routerLinkActive="active" matTooltip="More" title="More">
               <mat-icon> more_vert </mat-icon>
@@ -61,13 +462,12 @@
               <mat-icon>redo</mat-icon>
             </a>
           </div>
-          <button mat-button color="black" (click)="onSubmit(createNote.value)">Close</button>
+          <button mat-button (click)="showHeader=true">
+          <span>close</span>  
+          </button>
         </mat-toolbar-row>
 
       </mat-expansion-panel>
     </mat-accordion>
   </form>
-</div>
-<div>
-  <app-list-of-notes></app-list-of-notes>
-</div>
+</div> -->

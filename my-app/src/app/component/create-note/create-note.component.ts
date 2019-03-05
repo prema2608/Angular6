@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteService } from 'src/app/core/services/note.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -10,52 +11,35 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 })
 export class CreateNoteComponent implements OnInit {
   createNote: FormGroup;
-  // panelOpenState = false;
-  // discription = String;
-  // title = String;
-  // submitted = false;
-
-  constructor(private noteservice: NoteService, private formBuilder: FormBuilder) { }
+  submitted = false;
+  public showHeader = true;
+  token = localStorage.getItem('token')
+  constructor(private noteservice: NoteService, private formBuilder: FormBuilder, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
-
-    this.formBuilder.group({
-      title: [''],
+    this.createNote = this.formBuilder.group({
+      title: ['', Validators.required],
       description: ['', Validators.required]
-    })
-
+    });
   }
+  get f() { return this.createNote.controls; }
 
-  // updateNote(note) {
-  //   this.noteservice.updateNote(note);
-  // }
+  onSubmit(note) {
+    this.submitted = true;
 
-  // createNote(dis, title) {
-  //   this.discription = dis
-  //   this.title = title
-  //   var note: {
-  //     discription, title
-  //   }
-  //   console.log(note)
-  //   this.noteservice.createNote(note);
-  // }
-
-  public onSubmit(note) {
- 
-    this.createNote = new FormGroup({
-      title: new FormControl,
-      description:new FormControl
-   });
     if (this.createNote.invalid) {
       return;
     }
+    if (this.createNote.value.title === "" && this.createNote.value.description === "") {
+      return;
+    }
+    console.log(this.token);
     console.log(note);
     this.noteservice.createNote(note).subscribe(response => {
-      console.log("sucessfully created note");
-    },
-      (error) => {
-        console.log(error);
+      this.snackbar.open("Note has been created successfully", "OK", {
+        duration: 2000
       });
-
+    })
   }
+
 }
