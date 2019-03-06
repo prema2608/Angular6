@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-navibar',
@@ -21,5 +22,7 @@ ngOnDestroy() {
   // its a clean up method called when ever the instance is destroyed
   this.parentSubject.unsubscribe();
 }
-
+// navigation(){
+//   this.router.navigate(['/home/trash'])
+// }
 }

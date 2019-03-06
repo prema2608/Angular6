@@ -15,31 +15,45 @@ export interface DialogData {
   styleUrls: ['./list-of-notes.component.css']
 })
 export class ListOfNotesComponent implements OnInit {
-  private notes: Note[] = [];
+  notes: Note[] = [];
 
   constructor(private service: NoteService, public dialog: MatDialog) { }
 
 
-  openDialog(notes): void {
+  openDialog(note): void {
     const dialogRef = this.dialog.open(UpdateNoteComponent, {
       width: '600px',
       height: '300px',
-      data: notes
+      data: note
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.service.updateNote(notes, notes.noteId)
+      this.service.updateNote(note, note.noteId)
     });
   }
 
-  deleteNote(noteId) {
-    //  console.log(note);
-    this.service.deleteNote(noteId).subscribe(response => {
-      this.ngOnInit();
-      console.log("deleted");
+  inTrash(note) {
+    note.inTrash = 1;
+    console.log(note)
+    this.service.updateNote(note, note.noteId).subscribe(response=> {
+      console.log("updated");
   })
-   }
+  }
+  inArchive(note) {
+    note.archive = 1;
+    console.log(note)
+    this.service.updateNote(note, note.noteId).subscribe(response=> {
+      console.log("updated");
+  })
+  }
 
+  backupNote(note) {
+    note.inTrash = 0;
+    console.log(note)
+    this.service.updateNote(note, note.noteId).subscribe(response=> {
+      console.log("updated");
+  })
+  }
   ngOnInit() {
     this.retriveNotes()
   }

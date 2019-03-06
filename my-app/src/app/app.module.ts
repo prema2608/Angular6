@@ -11,6 +11,7 @@ import{ SideNavibarComponent } from './component/side-navibar/side-navibar.compo
 import { ListOfNotesComponent } from './component/list-of-notes/list-of-notes.component';
 import { UpdateNoteComponent } from './component/update-note/update-note.component';
 import { TrashNoteComponent } from './component/trash-note/trash-note.component';
+import { ArchiveNoteComponent } from './component/archive-note/archive-note.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TrashNoteComponent } from './component/trash-note/trash-note.component'
     CreateNoteComponent,
     SideNavibarComponent,
     UpdateNoteComponent,
-    TrashNoteComponent
+    TrashNoteComponent,
+    ArchiveNoteComponent
    
 
   ],

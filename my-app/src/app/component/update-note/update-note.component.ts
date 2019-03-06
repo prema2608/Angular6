@@ -27,7 +27,6 @@ export class UpdateNoteComponent implements OnInit {
      
    }
    
- 
    onNoClick(): void {
      this.dialogRef.close();
    }
@@ -35,7 +34,7 @@ export class UpdateNoteComponent implements OnInit {
    updateNote(note,noteId) {
     //  console.log(note);
     this.service.updateNote(note,noteId).subscribe(response => {
-      console.log("Registered");
+      console.log("updated");
   })
    }
 

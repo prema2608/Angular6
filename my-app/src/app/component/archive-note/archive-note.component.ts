@@ -1,22 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { NoteService } from 'src/app/core/services/note.service';
-import { MatSnackBar, MatDialog } from '@angular/material';
-import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { Note } from 'src/app/core/models/note';
-
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { NoteService } from 'src/app/core/services/note.service';
+import { UpdateNoteComponent } from '../update-note/update-note.component';
 
 @Component({
-  selector: 'app-trash-note',
-  templateUrl: './trash-note.component.html',
-  styleUrls: ['./trash-note.component.css']
+  selector: 'app-archive-note',
+  templateUrl: './archive-note.component.html',
+  styleUrls: ['./archive-note.component.css']
 })
-export class TrashNoteComponent implements OnInit {
+export class ArchiveNoteComponent implements OnInit {
 
-  constructor( private service: NoteService, private snackbar: MatSnackBar,
+  constructor(private service: NoteService, private snackbar: MatSnackBar,
     public dialog: MatDialog) { }
 
-
-    notes: Note[] =[];
+  notes: Note[] =[];
   
 
   ngOnInit() {
@@ -30,17 +28,12 @@ export class TrashNoteComponent implements OnInit {
     }),
       error => {
         console.log(error);
-        this.snackbar.open('Note cannot be deleted', 'Error', { duration: 2000 });
+        this.snackbar.open('Note cannot be deleted', 'Error in note retrieval', { duration: 2000 });
       }
   }
+ 
+  
 
-  backupNote(note) {
-    note.inTrash = 0;
-    console.log(note)
-    this.service.updateNote(note, note.noteId).subscribe(response=> {
-      console.log("updated");
-  })
-  }
   updateNote(note, noteId) {
     //  console.log(note);
     this.service.updateNote(note, noteId).subscribe(response => {
@@ -68,4 +61,12 @@ export class TrashNoteComponent implements OnInit {
       this.service.updateNote(notes, notes.noteId)
     });
   }
+  
+  unArchive(note) {
+    note.archive = 0;
+    console.log(note)
+    this.service.updateNote(note, note.noteId).subscribe(response=> {
+      console.log("updated");
+  })
+}
 }

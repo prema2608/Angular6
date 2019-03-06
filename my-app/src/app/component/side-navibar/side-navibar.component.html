@@ -1,10 +1,10 @@
 <!-- side navigation bar -->
 <mat-sidenav-container class="example-container">
   <mat-sidenav #drawer mode="side" opened role="navigation">
-    
+
     <mat-nav-list>
       <!-- notes -->
-      <button mat-menu-item>
+      <button mat-menu-item [routerLink]="['/home/create-note']"> 
         <mat-icon>note_add</mat-icon>
         <span>Notes</span>
       </button>
@@ -26,13 +26,13 @@
       </button>
       <mat-divider></mat-divider>
       <!-- archive -->
-      <button mat-menu-item>
+      <button mat-menu-item [routerLink]="['/home/archive-note']">
         <mat-icon>archive</mat-icon>
         <span>Archive</span>
       </button>
       <!-- delete -->
-      <button mat-menu-item (click)="navigation(trash)">
-        <mat-icon>delete </mat-icon>
+      <button mat-menu-item [routerLink]="['/home/trash']" >
+        <mat-icon >delete </mat-icon>
         <span>Trash </span>
       </button>
 
@@ -40,10 +40,10 @@
 
   </mat-sidenav>
   <mat-sidenav-content>
-    
 
-      <router-outlet></router-outlet>
 
-   
+    <router-outlet></router-outlet>
+
+
   </mat-sidenav-content>
 </mat-sidenav-container>

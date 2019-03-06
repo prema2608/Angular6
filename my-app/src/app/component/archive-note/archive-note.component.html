@@ -5,8 +5,8 @@
   </div>
 
   <div *ngFor="let note of notes">
-    <mat-card *ngIf="!note.inTrash && !note.archive" style="background-color:khaki">
-      <mat-card-header >
+    <mat-card *ngIf="!note.inTrash && note.archive" style="background-color:lightblue">
+      <mat-card-header>
         <mat-card-title (click)=openDialog(note)>
           {{note.title}}
         </mat-card-title>
@@ -39,8 +39,8 @@
         </div>
 
         <div style="position:relative;display:block">
-          <a mat-button (click)="inArchive(note)" routerLinkActive="active" matTooltip="archive" title="archive">
-            <mat-icon>archive</mat-icon>
+          <a mat-button (click)="unArchive(note)" routerLinkActive="active" matTooltip="archive" title="unarchive">
+            <mat-icon>unarchive</mat-icon>
           </a>
         </div>
 
