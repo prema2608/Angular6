@@ -26,6 +26,7 @@ export class TrashNoteComponent implements OnInit {
   deleteNote(noteId) {
     console.log(noteId);
     this.service.deleteNote(noteId).subscribe(response => {
+      this.retriveNotes();
       this.snackbar.open('Note deleted successfully', 'OK', { duration: 2000 });
     }),
       error => {
