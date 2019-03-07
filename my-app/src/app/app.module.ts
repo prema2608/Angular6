@@ -12,6 +12,8 @@ import { ListOfNotesComponent } from './component/list-of-notes/list-of-notes.co
 import { UpdateNoteComponent } from './component/update-note/update-note.component';
 import { TrashNoteComponent } from './component/trash-note/trash-note.component';
 import { ArchiveNoteComponent } from './component/archive-note/archive-note.component';
+import { NoteFilterPipe } from './core/pipe/note-filter.pipe';
+import { EditLabelsComponent } from './component/edit-labels/edit-labels.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ArchiveNoteComponent } from './component/archive-note/archive-note.comp
     SideNavibarComponent,
     UpdateNoteComponent,
     TrashNoteComponent,
-    ArchiveNoteComponent
+    ArchiveNoteComponent,
+    NoteFilterPipe,
+    EditLabelsComponent
    
 
   ],
@@ -33,7 +37,7 @@ import { ArchiveNoteComponent } from './component/archive-note/archive-note.comp
     AppRoutingModule,
     AppMaterialModule
   ],
-  entryComponents:[UpdateNoteComponent],
+  entryComponents:[UpdateNoteComponent,EditLabelsComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -11,6 +11,7 @@ export class NoteService {
   token: any;
 
   constructor(private http: HttpService) { }
+
   retriveNote() {
     var token = localStorage.getItem('token');
     var httpheaders = {
@@ -60,5 +61,20 @@ export class NoteService {
       })
     }
     return this.http.deleteService(environment.noteurl + 'deletenote/' + noteId, httpheaders)
+  }
+
+
+  createLabel(label) {
+    console.log(label)
+
+    var token = localStorage.getItem('token');
+    var httpheaders = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'token': token
+      })
+    }
+    return this.http.postHeaderService(environment.noteurl + 'createnote', label, httpheaders)
+
   }
 }

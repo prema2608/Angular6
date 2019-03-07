@@ -1,7 +1,6 @@
 <!-- side navigation bar -->
 <mat-sidenav-container class="example-container">
   <mat-sidenav #drawer mode="side" opened role="navigation">
-
     <mat-nav-list>
       <!-- notes -->
       <button mat-menu-item [routerLink]="['/home/create-note']"> 
@@ -20,7 +19,7 @@
         <font size="1" face="arial">LABELS</font>
       </span>
       <!-- edit labels -->
-      <button mat-menu-item>
+      <button mat-menu-item (click)=openDialog()>
         <mat-icon>edit</mat-icon>
         <span>Edit Labels</span>
       </button>

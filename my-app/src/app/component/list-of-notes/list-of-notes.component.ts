@@ -23,7 +23,7 @@ export class ListOfNotesComponent implements OnInit {
   openDialog(note): void {
     const dialogRef = this.dialog.open(UpdateNoteComponent, {
       width: '600px',
-      height: '300px',
+      height: '270px',
       data: note
     });
 

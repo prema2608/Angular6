@@ -1,11 +1,11 @@
 
 <div class="container" fxLayout="column" fxLayoutGap="1%" fxLayoutAlign="center center">
-  <div fxFlex="80%">
+  <div fxFlex="90%">
     <!-- <app-create-note></app-create-note> -->
   </div>
 
   <div *ngFor="let note of notes">
-    <mat-card *ngIf="!note.inTrash && !note.archive" style="background-color:khaki">
+    <mat-card style="width: 350px;height: 115px"class="color" *ngIf="!note.inTrash && !note.archive" >
       <mat-card-header >
         <mat-card-title (click)=openDialog(note)>
           {{note.title}}

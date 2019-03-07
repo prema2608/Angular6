@@ -5,6 +5,13 @@
 .mat-expansion-panel{
 border:0ch
 }
-/* .mat-accordion{
-    padding: 200px;
-} */
+.mat-accordion{
+    width: 200px;
+    height: 10px;
+}
+.mat-icon {
+    font-size: 20px;
+  }
+  .mat-button{
+    margin: -5x;
+  }
