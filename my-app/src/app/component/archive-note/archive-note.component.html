@@ -5,7 +5,7 @@
   </div>
 
   <div *ngFor="let note of notes">
-    <mat-card *ngIf="!note.inTrash && note.archive" style="background-color:lightblue">
+    <mat-card  *ngIf="!note.inTrash && note.archive" style="background-color:lightblue ;width: 350px;height:115px">
       <mat-card-header>
         <mat-card-title (click)=openDialog(note)>
           {{note.title}}

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { environment } from 'src/environments/environment';
 import { HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -63,8 +64,9 @@ export class NoteService {
     return this.http.deleteService(environment.noteurl + 'deletenote/' + noteId, httpheaders)
   }
 
+////labels
 
-  createLabel(label) {
+  createLabels(label) {
     console.log(label)
 
     var token = localStorage.getItem('token');
@@ -74,7 +76,59 @@ export class NoteService {
         'token': token
       })
     }
-    return this.http.postHeaderService(environment.noteurl + 'createnote', label, httpheaders)
+    return this.http.postHeaderService(environment.noteurl + 'createlabel', label, httpheaders)
 
   }
+
+
+  retriveLabels() {
+    var token = localStorage.getItem('token');
+    var httpheaders = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'token': token
+      })
+    }
+    return this.http.getService(environment.noteurl + 'retrievelabel', httpheaders);
+  }
+
+  // updateLabels(labels, id) {
+  //   // console.log(note)
+  //   var labelId = labels.labelId;
+  //   var token = localStorage.getItem('token');
+  //   var httpheaders = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json',
+  //       'token': token
+  //     })
+  //   }
+  //   return this.http.putService(environment.noteurl + 'updatelabel/' + id, labels, httpheaders)
+
+  // }
+  updateLabel(label): Observable<any> {
+    var token = localStorage.getItem('token');
+    var httpheaders =
+    {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'token': token
+      })
+    }
+    return this.http.putService(environment.noteurl + 'updatelabel/' + label.labelId, label,httpheaders) ;
+  }
+
+  deleteLabels(labelId) {
+    console.log(labelId)
+    // var noteId=noteId.noteId;
+    var token = localStorage.getItem('token');
+    var httpheaders =
+    {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'token': token
+      })
+    }
+    return this.http.deleteService(environment.noteurl + 'deletelabel/' + labelId, httpheaders)
+  }
+
 }

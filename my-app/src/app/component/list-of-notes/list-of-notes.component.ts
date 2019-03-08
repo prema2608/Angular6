@@ -18,7 +18,9 @@ export class ListOfNotesComponent implements OnInit {
   notes: Note[] = [];
 
   constructor(private service: NoteService, public dialog: MatDialog) { }
-
+  ngOnInit() {
+    this.retriveNotes()
+  }
 
   openDialog(note): void {
     const dialogRef = this.dialog.open(UpdateNoteComponent, {
@@ -36,6 +38,7 @@ export class ListOfNotesComponent implements OnInit {
     note.inTrash = 1;
     console.log(note)
     this.service.updateNote(note, note.noteId).subscribe(response=> {
+      this.retriveNotes();
       console.log("updated");
   })
   }
@@ -43,6 +46,7 @@ export class ListOfNotesComponent implements OnInit {
     note.archive = 1;
     console.log(note)
     this.service.updateNote(note, note.noteId).subscribe(response=> {
+      this.retriveNotes()
       console.log("updated");
   })
   }
@@ -54,9 +58,7 @@ export class ListOfNotesComponent implements OnInit {
       console.log("updated");
   })
   }
-  ngOnInit() {
-    this.retriveNotes()
-  }
+ 
   public retriveNotes() {
     this.service.retriveNote().subscribe((newNote: any) => {
       this.notes = newNote;

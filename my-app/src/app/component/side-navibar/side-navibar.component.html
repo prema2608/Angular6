@@ -3,8 +3,8 @@
   <mat-sidenav #drawer mode="side" opened role="navigation">
     <mat-nav-list>
       <!-- notes -->
-      <button mat-menu-item [routerLink]="['/home/create-note']"> 
-        <mat-icon>note_add</mat-icon>
+      <button mat-menu-item [routerLink]="['/home/create-note']">
+        <mat-icon>lightbulb</mat-icon>
         <span>Notes</span>
       </button>
       <!-- remainder -->
@@ -18,7 +18,15 @@
       <span>
         <font size="1" face="arial">LABELS</font>
       </span>
-      <!-- edit labels -->
+
+      <div *ngFor="let label of labels">
+          <button mat-menu-item>
+          <mat-icon> label_outline</mat-icon>
+           {{label.labelName}}
+           </button>
+          </div>
+        
+      <!-- edit labels  -->
       <button mat-menu-item (click)=openDialog()>
         <mat-icon>edit</mat-icon>
         <span>Edit Labels</span>
@@ -30,8 +38,8 @@
         <span>Archive</span>
       </button>
       <!-- delete -->
-      <button mat-menu-item [routerLink]="['/home/trash']" >
-        <mat-icon >delete </mat-icon>
+      <button mat-menu-item [routerLink]="['/home/trash']">
+        <mat-icon>delete </mat-icon>
         <span>Trash </span>
       </button>
 

@@ -1,26 +1,26 @@
 <div>
   <font size="3" face="Manjari Bold" text-align="center">EDIT LABELS</font>
 </div>
-<!-- <form [formGroup]="createLabels"> -->
+
 <br>
 <mat-toolbar-row>
   <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
     <mat-icon>close</mat-icon>
   </button>
-  <mat-form-field class="example-form-field">
+  <mat-form-field>
     <input matInput type="text" placeholder="create new label" [(ngModel)]="value">
   </mat-form-field>
-  <mat-icon (click)="createLabel(label)">done</mat-icon>
+  <mat-icon (click)="createLabels(value)">done</mat-icon>
 </mat-toolbar-row>
 <div *ngFor="let label of labels">
-  <div fxLayout="row" class="example-container">
+  <div fxLayout="row">
     <div fxFlex=10%>
-      <mat-icon class="icon" (click)=deleteLabel(label.labelId)>delete</mat-icon>
+      <mat-icon class="icon" (click)=deleteLabels(label.labelId)>delete</mat-icon>
     </div>
-    <div fxFlex=80% class="textarea" data-text="Create new label" contenteditable="true" id="text" #existinglabel>
+    <div fxFlex=30% class="textarea" data-text="Create new label" contenteditable="true" id="text" #existinglabel>
       {{label.labelName}}</div>
     <div fxFlex=10%>
-      <mat-icon class="icon" (click)=updateLabel(label,existinglabel)>edit</mat-icon>
+      <mat-icon class="icon" (click)=updateLabels(label,existinglabel)>edit</mat-icon>
     </div>
   </div>
-<!-- </form> -->
+</div>

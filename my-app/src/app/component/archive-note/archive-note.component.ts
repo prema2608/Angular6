@@ -14,13 +14,22 @@ export class ArchiveNoteComponent implements OnInit {
   constructor(private service: NoteService, private snackbar: MatSnackBar,
     public dialog: MatDialog) { }
 
-  notes: Note[] =[];
-  
+  notes: Note[] = [];
+
 
   ngOnInit() {
     this.retriveNotes();
   }
 
+
+  inTrash(note) {
+    note.inTrash = 1;
+    console.log(note)
+    this.service.updateNote(note, note.noteId).subscribe(response=> {
+      this.retriveNotes();
+      console.log("updated");
+  })
+  }
   deleteNote(noteId) {
     console.log(noteId);
     this.service.deleteNote(noteId).subscribe(response => {
@@ -31,8 +40,6 @@ export class ArchiveNoteComponent implements OnInit {
         this.snackbar.open('Note cannot be deleted', 'Error in note retrieval', { duration: 2000 });
       }
   }
- 
-  
 
   updateNote(note, noteId) {
     //  console.log(note);
@@ -41,7 +48,7 @@ export class ArchiveNoteComponent implements OnInit {
     })
   }
 
- public retriveNotes() {
+  public retriveNotes() {
     this.service.retriveNote().subscribe((newNote: any) => {
       this.notes = newNote;
     },
@@ -49,7 +56,7 @@ export class ArchiveNoteComponent implements OnInit {
         console.log("invalid");
       });
   }
-                         
+
   openDialog(notes): void {
     const dialogRef = this.dialog.open(UpdateNoteComponent, {
       width: '600px',
@@ -61,12 +68,12 @@ export class ArchiveNoteComponent implements OnInit {
       this.service.updateNote(notes, notes.noteId)
     });
   }
-  
+
   unArchive(note) {
     note.archive = 0;
     console.log(note)
-    this.service.updateNote(note, note.noteId).subscribe(response=> {
+    this.service.updateNote(note, note.noteId).subscribe(response => {
       console.log("updated");
-  })
-}
+    })
+  }
 }
