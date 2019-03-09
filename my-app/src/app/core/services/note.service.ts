@@ -64,7 +64,7 @@ export class NoteService {
     return this.http.deleteService(environment.noteurl + 'deletenote/' + noteId, httpheaders)
   }
 
-////labels
+  ////labels
 
   createLabels(label) {
     console.log(label)
@@ -114,7 +114,7 @@ export class NoteService {
         'token': token
       })
     }
-    return this.http.putService(environment.noteurl + 'updatelabel/' + label.labelId, label,httpheaders) ;
+    return this.http.putService(environment.noteurl + 'updatelabel/' + label.labelId, label, httpheaders);
   }
 
   deleteLabels(labelId) {
@@ -130,5 +130,29 @@ export class NoteService {
     }
     return this.http.deleteService(environment.noteurl + 'deletelabel/' + labelId, httpheaders)
   }
+
+
+  mapLabelTONote(noteId, label) {
+    var httpheaders = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'token': this.token
+      })
+    };
+    return this.http.putService(environment.noteurl+'/mergelabelnote/' + noteId, label, httpheaders);
+  }
+
+ 
+  deletenotelabel(labelId, noteId) {
+    return this.http.deleteService(`${environment.noteurl}deletelabeltonote/`, {
+      params: {
+        noteId: noteId,
+        labelId: labelId
+      },
+      observe: 'response'
+    }
+    )
+  }
+
 
 }

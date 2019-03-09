@@ -1,0 +1,22 @@
+<div>
+  <font size="3" face="Manjari Bold" text-align="center">Label note</font>
+</div>
+
+<br>
+<mat-toolbar-row>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Enter label name" [(ngModel)]="value">
+  </mat-form-field>
+  <mat-icon >search</mat-icon>
+</mat-toolbar-row>
+<div *ngFor="let label of labels">
+  <div fxLayout="row">
+    <div fxFlex=10%>
+        <mat-checkbox>Check me!</mat-checkbox>
+    </div>
+    <div fxFlex=65% class="textarea" data-text="Create new label" contenteditable="true" id="text" #existinglabel>
+      {{label.labelName}}</div>
+    <div fxFlex=10%>
+    </div>
+  </div>
+</div>

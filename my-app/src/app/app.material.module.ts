@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatInputModule,  _MatIconMixinBase, MatButtonModule, MatIconModule} from '@angular/material'; 
+import { MatInputModule,  _MatIconMixinBase, MatButtonModule, MatIconModule, MatCheckboxModule} from '@angular/material'; 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import  {MatCardModule} from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,7 +43,8 @@ import { MatDialogModule} from '@angular/material';
     MatExpansionModule,
     MatSnackBarModule,
     MatChipsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -63,7 +64,8 @@ import { MatDialogModule} from '@angular/material';
     MatExpansionModule,
     MatSnackBarModule,
     MatChipsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
   ],
   
 

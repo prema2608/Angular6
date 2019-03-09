@@ -17,7 +17,7 @@
     <div fxFlex=10%>
       <mat-icon class="icon" (click)=deleteLabels(label.labelId)>delete</mat-icon>
     </div>
-    <div fxFlex=30% class="textarea" data-text="Create new label" contenteditable="true" id="text" #existinglabel>
+    <div fxFlex=65% class="textarea" data-text="Create new label" contenteditable="true" id="text" #existinglabel>
       {{label.labelName}}</div>
     <div fxFlex=10%>
       <mat-icon class="icon" (click)=updateLabels(label,existinglabel)>edit</mat-icon>

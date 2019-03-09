@@ -14,6 +14,7 @@ import { TrashNoteComponent } from './component/trash-note/trash-note.component'
 import { ArchiveNoteComponent } from './component/archive-note/archive-note.component';
 import { NoteFilterPipe } from './core/pipe/note-filter.pipe';
 import { EditLabelsComponent } from './component/edit-labels/edit-labels.component';
+import { MapLabelNotesComponent } from './component/map-label-notes/map-label-notes.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EditLabelsComponent } from './component/edit-labels/edit-labels.compone
     TrashNoteComponent,
     ArchiveNoteComponent,
     NoteFilterPipe,
-    EditLabelsComponent
+    EditLabelsComponent,
+    MapLabelNotesComponent
    
 
   ],

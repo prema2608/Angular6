@@ -11,20 +11,21 @@ import { Subject } from 'rxjs';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  parentSubject:Subject<any> = new Subject();
+  parentSubject: Subject<any> = new Subject();
 
-  constructor(private service: NoteService,private dialog :MatDialog,
-    private router:Router) { }
+  constructor(private service: NoteService, private dialog: MatDialog,
+    private router: Router) { }
 
   ngOnInit() {
-    
+
   }
   toggle() {
     this.parentSubject.next();
   }
-  signOut(){
+  signOut() {
     this.router.navigate(['/login'])
-    
+
   }
- 
+
+
 }
