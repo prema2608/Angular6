@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NoteService } from 'src/app/core/services/note.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
@@ -14,13 +14,23 @@ export class CreateNoteComponent implements OnInit {
   submitted = false;
   public showHeader = true;
   token = localStorage.getItem('token')
-  constructor(private noteservice: NoteService, private formBuilder: FormBuilder, private snackbar: MatSnackBar) { }
+  @Input() notes
+  constructor(private service: NoteService, private formBuilder: FormBuilder, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
+    this.retriveNotes();
     this.createNote = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required]
     });
+  }
+  public retriveNotes() {
+    this.service.retriveNote().subscribe((newNote: any) => {
+      this.notes = newNote;
+    },
+      (error) => {
+        console.log("invalid");
+      });
   }
   get f() { return this.createNote.controls; }
 
@@ -35,8 +45,9 @@ export class CreateNoteComponent implements OnInit {
     }
     console.log(this.token);
     console.log(note);
-    this.noteservice.createNote(note).subscribe(response => {
-      this.snackbar.open("Note has been created successfully", "OK", {
+    this.service.createNote(note).subscribe(response => {
+      this.retriveNotes();
+     this.snackbar.open("Note has been created successfully", "OK", {
         duration: 2000
       });
     })

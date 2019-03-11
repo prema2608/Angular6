@@ -15,6 +15,8 @@ import { ArchiveNoteComponent } from './component/archive-note/archive-note.comp
 import { NoteFilterPipe } from './core/pipe/note-filter.pipe';
 import { EditLabelsComponent } from './component/edit-labels/edit-labels.component';
 import { MapLabelNotesComponent } from './component/map-label-notes/map-label-notes.component';
+import { SearchFilterPipe } from './core/pipe/search-filter.pipe';
+import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { MapLabelNotesComponent } from './component/map-label-notes/map-label-no
     ArchiveNoteComponent,
     NoteFilterPipe,
     EditLabelsComponent,
-    MapLabelNotesComponent
+    MapLabelNotesComponent,
+    SearchFilterPipe,
+    PinNotesComponent
    
 
   ],

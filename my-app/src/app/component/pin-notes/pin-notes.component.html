@@ -1,28 +1,23 @@
-<div class="container" fxLayout="column" fxLayoutGap="2%" fxLayoutAlign="center center">
-  <div *ngFor="let note of notes | noteFilter">
-    <mat-card style="width:350px;height: 170px" class="color">
-      <mat-toolbar-row>
+
+<div class="container" fxLayout="column" fxLayoutGap="1%" fxLayoutAlign="center center">
+  <div fxFlex="80%">
+  </div>
+
+  <div *ngFor="let note of notes">
+    <mat-card  *ngIf="!note.inTrash && !note.archive && note.pinned" style="background-color:lightblue ;width: 350px;height:115px">
       <mat-card-header>
         <mat-card-title (click)=openDialog(note)>
           {{note.title}}
         </mat-card-title>
       </mat-card-header>
       <div style="position:relative;display:block">
-        <a mat-button (click)="pinned(note)" routerLinkActive="active" matTooltip="colorize" title="pin note">
+        <a mat-button (click)="unpinned(note)"routerLinkActive="active" matTooltip="colorize" title="pin note">
           <mat-icon>colorize</mat-icon>
         </a>
       </div>
-    </mat-toolbar-row>
       <mat-card-content (click)=openDialog(note)>
         {{note.description}}
       </mat-card-content>
-
-      <mat-chip-list #chipList>
-        <mat-chip *ngFor="let label of note.labelList" [removable]="removable" (removed)="remove(label,note)">
-          {{label.labelName}}
-          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-        </mat-chip>
-      </mat-chip-list>
       <mat-toolbar-row>
         <div>
           <a mat-button routerLinkActive="active" matTooltip="Remind me" title="Remind me">
@@ -48,32 +43,19 @@
         </div>
 
         <div style="position:relative;display:block">
-          <a mat-button (click)="inArchive(note)" routerLinkActive="active" matTooltip="archive" title="archive">
-            <mat-icon>archive</mat-icon>
+          <a mat-button (click)="unArchive(note)" routerLinkActive="active" matTooltip="archive" title="unarchive">
+            <mat-icon>unarchive</mat-icon>
           </a>
         </div>
 
         <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="more" matTooltip="more" title="more">
           <i id="accountcircle" class="material-icons">more_vert</i></button>
-        <mat-menu #more="matMenu" class="morecard">
-          <button mat-button (click)="inTrash(note)">Delete Note</button>
+          <mat-menu #more="matMenu" class="morecard">
 
-
-          <div>
-            <button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">Add
-              Label</button>
-            <mat-menu #menu="matMenu">
-              <div fxLayout="row">
-                <input type="input" placeholder="Seach for labels">
-              </div>
-              <div *ngFor="let label of labels">
-                <mat-checkbox (click)="addLabelToNote($event,label,note)">{{label.labelName}}</mat-checkbox>
-              </div>
-            </mat-menu>
-          </div>
+          <button  mat-button (click)="inTrash(note)" >Delete Note</button>
         </mat-menu>
       </mat-toolbar-row>
-    </mat-card>
 
+    </mat-card>
   </div>
 </div>

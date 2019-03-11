@@ -9,45 +9,35 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class NoteService {
-  token: any;
+  token = localStorage.getItem('token');
+  httpheaders = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'token': this.token
+    })
+  }
 
   constructor(private http: HttpService) { }
 
   retriveNote() {
-    var token = localStorage.getItem('token');
-    var httpheaders = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'token': token
-      })
-    }
-    return this.http.getService(environment.noteurl + 'retrivenote', httpheaders);
+    return this.http.getService(environment.noteurl + 'retrivenote', this.httpheaders);
   }
 
   createNote(note) {
-    console.log(note)
-
-    var token = localStorage.getItem('token');
-    var httpheaders = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'token': token
-      })
-    }
-    return this.http.postHeaderService(environment.noteurl + 'createnote', note, httpheaders)
+    return this.http.postHeaderService(environment.noteurl + 'createnote', note, this.httpheaders)
 
   }
   updateNote(note, id) {
-    // console.log(note)
-    var noteId = note.noteId;
-    var token = localStorage.getItem('token');
-    var httpheaders = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'token': token
-      })
-    }
-    return this.http.putService(environment.noteurl + 'updatenote/' + id, note, httpheaders)
+    
+    // var noteId = note.noteId;
+    // var token = localStorage.getItem('token');
+    // var httpheaders = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //     'token': token
+    //   })
+    // }
+    return this.http.putService(environment.noteurl + 'updatenote/' + id, note, this.httpheaders)
 
   }
   deleteNote(noteId) {
@@ -61,7 +51,7 @@ export class NoteService {
         'token': token
       })
     }
-    return this.http.deleteService(environment.noteurl + 'deletenote/' + noteId, httpheaders)
+    return this.http.deleteService(environment.noteurl + 'deletenote/' + noteId, this.httpheaders)
   }
 
   ////labels
@@ -76,7 +66,7 @@ export class NoteService {
         'token': token
       })
     }
-    return this.http.postHeaderService(environment.noteurl + 'createlabel', label, httpheaders)
+    return this.http.postHeaderService(environment.noteurl + 'createlabel', label, this.httpheaders)
 
   }
 
@@ -89,7 +79,7 @@ export class NoteService {
         'token': token
       })
     }
-    return this.http.getService(environment.noteurl + 'retrievelabel', httpheaders);
+    return this.http.getService(environment.noteurl + 'retrievelabel', this.httpheaders);
   }
 
   // updateLabels(labels, id) {
@@ -114,7 +104,7 @@ export class NoteService {
         'token': token
       })
     }
-    return this.http.putService(environment.noteurl + 'updatelabel/' + label.labelId, label, httpheaders);
+    return this.http.putService(environment.noteurl + 'updatelabel/' + label.labelId, label, this.httpheaders);
   }
 
   deleteLabels(labelId) {
@@ -128,23 +118,17 @@ export class NoteService {
         'token': token
       })
     }
-    return this.http.deleteService(environment.noteurl + 'deletelabel/' + labelId, httpheaders)
+    return this.http.deleteService(environment.noteurl + 'deletelabel/' + labelId, this.httpheaders)
   }
 
 
   mapLabelTONote(noteId, label) {
-    var httpheaders = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'token': this.token
-      })
-    };
-    return this.http.putService(environment.noteurl+'/mergelabelnote/' + noteId, label, httpheaders);
+    return this.http.putServiceOnlyHeader(environment.noteurl+'/mergelabelnote/' + noteId, label);
   }
 
  
   deletenotelabel(labelId, noteId) {
-    return this.http.deleteService(`${environment.noteurl}deletelabeltonote/`, {
+    return this.http.deleteService(environment.noteurl+'/deletelabeltonote/' ,{
       params: {
         noteId: noteId,
         labelId: labelId

@@ -1,6 +1,6 @@
 export class labels {
-    "labelId":string;
-    "labelName":string;
+    labelId:string;
+    labelName:string;
 
     
  }

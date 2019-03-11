@@ -7,6 +7,7 @@ import { CreateNoteComponent } from './component/create-note/create-note.compone
 import { TrashNoteComponent } from './component/trash-note/trash-note.component';
 import { ArchiveNoteComponent } from './component/archive-note/archive-note.component';
 import { EditLabelsComponent } from './component/edit-labels/edit-labels.component';
+import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
         {path: '', redirectTo:'create-note' ,pathMatch:'full'},
         {path: 'trash', component: TrashNoteComponent},
         { path: 'archive-note',component:ArchiveNoteComponent},
-        {path:'edit-labels',component:EditLabelsComponent}
+        {path:'edit-labels',component:EditLabelsComponent},
+        {path:'pin-notes',component:PinNotesComponent}
       ]
   },
   { path: '**', redirectTo: 'login', pathMatch: 'full' }

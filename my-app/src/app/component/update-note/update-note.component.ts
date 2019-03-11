@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogData, ListOfNotesComponent } from '../list-of-notes/list-of-notes.component';
@@ -10,7 +10,7 @@ import { NoteService } from 'src/app/core/services/note.service';
   styleUrls: ['./update-note.component.css']
 })
 export class UpdateNoteComponent implements OnInit {
-
+  @Input() notes
   updateNoteForm:FormGroup;
   public mytoken = localStorage.getItem('token'); 
   
@@ -23,6 +23,7 @@ export class UpdateNoteComponent implements OnInit {
    private formBuilder:FormBuilder) {}
  
    ngOnInit() {
+    this.retriveNotes();
      this.updateNoteForm=this.formBuilder.group({});
      
    }
@@ -30,7 +31,24 @@ export class UpdateNoteComponent implements OnInit {
    onNoClick(): void {
      this.dialogRef.close();
    }
+   public retriveNotes() {
+    this.service.retriveNote().subscribe((newNote: any) => {
+      this.notes = newNote;
+    },
+      (error) => {
+        console.log("invalid");
+      });
+  }
 
+
+   inArchive(note) {
+    note.archive = 1;
+    console.log(note)
+    this.service.updateNote(note, note.noteId).subscribe(response => {
+      this.retriveNotes()
+      console.log("updated");
+    })
+  }
    updateNote(note,noteId) {
     //  console.log(note);
     this.service.updateNote(note,noteId).subscribe(response => {

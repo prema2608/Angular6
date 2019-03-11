@@ -3,7 +3,11 @@
   <div>
     <input matInput [(ngModel)]="data.title" [value]=data.title placeholder="Title">
   </div>
-  <img src="./assets/images/pin.jpg" title="pin note">
+  <div>
+    <a mat-button routerLinkActive="active" matTooltip="Remind me" title="pin notes">
+      <mat-icon>colorize</mat-icon>
+    </a>
+  </div>
 </mat-toolbar-row>
 <br>
 <mat-label for="discription"><b>description</b></mat-label>
@@ -36,7 +40,7 @@
   </div>
 
   <div style="position:relative;display:block">
-    <a mat-button routerLinkActive="active" matTooltip="archive" title="archive">
+    <a mat-button  (click)="inArchive(note)" routerLinkActive="active" matTooltip="archive" title="archive">
       <mat-icon>archive</mat-icon>
     </a>
   </div>

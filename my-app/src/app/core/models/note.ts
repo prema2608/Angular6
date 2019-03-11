@@ -3,7 +3,7 @@ export interface Note {
     description:string;
     archive:boolean;
     inTrash:boolean;
-    // "pinned":boolean;
+    pinned:boolean;
     
  }
  
