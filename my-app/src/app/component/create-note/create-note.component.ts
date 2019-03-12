@@ -40,9 +40,9 @@ export class CreateNoteComponent implements OnInit {
     if (this.createNote.invalid) {
       return;
     }
-    if (this.createNote.value.title === "" && this.createNote.value.description === "") {
-      return;
-    }
+    // if (this.createNote.value.title === "" && this.createNote.value.description === "") {
+    //   return;
+    // }
     console.log(this.token);
     console.log(note);
     this.service.createNote(note).subscribe(response => {

@@ -60,11 +60,14 @@
 
 
           <div>
-            <button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">Add
-              Label</button>
-            <mat-menu #menu="matMenu">
+            <button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">Add Label</button>
+            <mat-menu  #menu="matMenu">
+              Label notes
               <div fxLayout="row">
+                <mat-toolbar-row>
                 <input type="input" placeholder="Seach for labels">
+                <mat-icon> search</mat-icon>
+              </mat-toolbar-row>
               </div>
               <div *ngFor="let label of labels">
                 <mat-checkbox (click)="addLabelToNote($event,label,note)">{{label.labelName}}</mat-checkbox>
@@ -77,3 +80,14 @@
 
   </div>
 </div>
+
+<!-- <div class="container" fxLayout="column" fxLayoutGap="10%" fxLayoutAlign="center center">
+  <div fxFlex="80%">
+    <app-create-note (eventCreate)="refresh($event)"></app-create-note>
+    <p>Pinned Notes</p>
+    <app-pin-notes class="pinnedNotes" [notes]="notes | noteFilter:'pinned'" (updateEvent)="onClickUpdate($event)" ></app-pin-notes>
+    <p>Others</p>
+    <app-pin-notes [notes]="notes | noteFilter" ></app-pin-notes>
+  
+</div>
+</div> -->

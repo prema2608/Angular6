@@ -1,5 +1,5 @@
 .color{
-    /* background-color:paleturquoise; */
+    background-color:paleturquoise;
     width: 350px;
     height: 400px;
     
@@ -12,4 +12,8 @@
   }
 
 
-  
+  .mat-menu
+  {
+    width: 350px;
+    height: 400px;
+  }

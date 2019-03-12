@@ -44,6 +44,13 @@ export class ListOfNotesComponent implements OnInit {
     });
   }
 
+  refresh(event) {
+    if (event) {
+      this.retriveNotes;
+    }
+  }
+
+  
   inTrash(note) {
     note.inTrash = 1;
     console.log(note)

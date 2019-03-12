@@ -1,18 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { NoteService } from 'src/app/core/services/note.service';
-import { MatSnackBar, MatDialog } from '@angular/material';
-import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { Note } from 'src/app/core/models/note';
-import { TrashDialogboxComponent } from '../trash-dialogbox/trash-dialogbox.component';
-
 
 @Component({
-  selector: 'app-trash-note',
-  templateUrl: './trash-note.component.html',
-  styleUrls: ['./trash-note.component.css']
+  selector: 'app-trash-dialogbox',
+  templateUrl: './trash-dialogbox.component.html',
+  styleUrls: ['./trash-dialogbox.component.css']
 })
-export class TrashNoteComponent implements OnInit {
-
+export class TrashDialogboxComponent implements OnInit {
   constructor( private service: NoteService, private snackbar: MatSnackBar,
     public dialog: MatDialog) { }
 
@@ -43,12 +39,12 @@ export class TrashNoteComponent implements OnInit {
       console.log("updated");
   })
   }
-  updateNote(note, noteId) {
-    //  console.log(note);
-    this.service.updateNote(note, noteId).subscribe(response => {
-      console.log("updated");
-    })
-  }
+  // updateNote(note, noteId) {
+  //   //  console.log(note);
+  //   this.service.updateNote(note, noteId).subscribe(response => {
+  //     console.log("updated");
+  //   })
+  // }
 
  public retriveNotes() {
     this.service.retriveNote().subscribe((newNote: any) => {
@@ -67,6 +63,8 @@ export class TrashNoteComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.snackbar.open('cant edit in trash', 'OK', { duration: 2000 });
+
       // this.service.updateNote(notes, notes.noteId)
     });
   }

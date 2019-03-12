@@ -17,6 +17,7 @@ import { EditLabelsComponent } from './component/edit-labels/edit-labels.compone
 import { MapLabelNotesComponent } from './component/map-label-notes/map-label-notes.component';
 import { SearchFilterPipe } from './core/pipe/search-filter.pipe';
 import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
+import { TrashDialogboxComponent } from './component/trash-dialogbox/trash-dialogbox.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
     EditLabelsComponent,
     MapLabelNotesComponent,
     SearchFilterPipe,
-    PinNotesComponent
+    PinNotesComponent,
+    TrashDialogboxComponent
    
 
   ],
@@ -43,7 +45,7 @@ import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
     AppRoutingModule,
     AppMaterialModule
   ],
-  entryComponents:[UpdateNoteComponent,EditLabelsComponent],
+  entryComponents:[UpdateNoteComponent,EditLabelsComponent,TrashDialogboxComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
