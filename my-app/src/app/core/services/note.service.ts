@@ -28,14 +28,14 @@ export class NoteService {
 
   }
   updateNote(note, id) {
-    
+
     // var noteId = note.noteId;
     // var token = localStorage.getItem('token');
     // var httpheaders = {
     //   headers: new HttpHeaders({
     //     'Content-Type': 'application/json',
     //     'token': token
-    //   })
+    //   })g
     // }
     return this.http.putService(environment.noteurl + 'updatenote/' + id, note, this.httpheaders)
 
@@ -123,20 +123,29 @@ export class NoteService {
 
 
   mapLabelTONote(noteId, label) {
-    return this.http.putServiceOnlyHeader(environment.noteurl+'/mergelabelnote/' + noteId, label);
+    return this.http.putServiceOnlyHeader(environment.noteurl + '/mergelabelnote/' + noteId, label);
   }
 
- 
-  deletenotelabel(labelId, noteId) {
-    return this.http.deleteService(environment.noteurl+'/deletelabeltonote/' ,{
-      params: {
-        noteId: noteId,
-        labelId: labelId
-      },
-      observe: 'response'
+
+  // deletenotelabel(labelId, noteId) {
+  //   return this.http.deleteService(environment.noteurl+'deletelabeltonote/' ,{
+  //     params: {
+  //       noteId: noteId,
+  //       labelId: labelId
+  //     },
+  //     observe: 'response'
+  //   }
+  //   )
+  // }
+
+  deletenotelabel(noteId, labelId) {
+    var httpheaders =
+    {
+      headers: new HttpHeaders({
+        // 'Content-Type': 'application/json',
+        'noteId': noteId
+      })
     }
-    )
+    return this.http.deleteService(environment.noteurl + 'delete-label-to-note/' + labelId, httpheaders)
   }
-
-
 }

@@ -1,0 +1,12 @@
+<div>
+    <app-create-note></app-create-note>
+</div>
+<div>
+  PINNED
+    <app-list-of-notes [notes]="notes | noteFilter: 'pinned' " [grid]="grid" (updateEvent)="updateEvent($event)"></app-list-of-notes>
+</div>
+
+<div>
+    OTHERS
+      <app-list-of-notes [notes]="notes | noteFilter" [grid]="grid"  (updateEvent)="updateEvent($event)"></app-list-of-notes>
+  </div>

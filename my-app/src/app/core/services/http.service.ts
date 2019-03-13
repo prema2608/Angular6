@@ -26,6 +26,8 @@ export class HttpService {
     return this.http.get<any>(url,header);
   }
  
+
+
   deleteService(url,header){
     return this.http.delete<any>(url,header);
   }

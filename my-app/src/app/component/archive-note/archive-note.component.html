@@ -1,7 +1,36 @@
+<div>
+  <app-list-of-notes [notes]="notes | noteFilter: 'archive'"  [grid]="grid" (updateEvent)="updateEvent($event)"></app-list-of-notes>
+</div>
 
-<div class="container" fxLayout="column" fxLayoutGap="1%" fxLayoutAlign="center center">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container" fxLayout="column" fxLayoutGap="1%" fxLayoutAlign="center center">
   <div fxFlex="80%">
-    <!-- <app-create-note></app-create-note> -->
+ 
   </div>
 
   <div *ngFor="let note of notes">
@@ -54,4 +83,4 @@
 
     </mat-card>
   </div>
-</div>
+</div> -->

@@ -16,8 +16,9 @@ import { NoteFilterPipe } from './core/pipe/note-filter.pipe';
 import { EditLabelsComponent } from './component/edit-labels/edit-labels.component';
 import { MapLabelNotesComponent } from './component/map-label-notes/map-label-notes.component';
 import { SearchFilterPipe } from './core/pipe/search-filter.pipe';
-import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
 import { TrashDialogboxComponent } from './component/trash-dialogbox/trash-dialogbox.component';
+import { ViewnoteComponent } from './component/viewnote/viewnote.component';
+
 
 @NgModule({
   declarations: [
@@ -35,8 +36,8 @@ import { TrashDialogboxComponent } from './component/trash-dialogbox/trash-dialo
     EditLabelsComponent,
     MapLabelNotesComponent,
     SearchFilterPipe,
-    PinNotesComponent,
-    TrashDialogboxComponent
+    TrashDialogboxComponent,
+    ViewnoteComponent
    
 
   ],

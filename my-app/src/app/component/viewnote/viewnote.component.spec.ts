@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PinNotesComponent } from './pin-notes.component';
+import { ViewnoteComponent } from './viewnote.component';
 
-describe('PinNotesComponent', () => {
-  let component: PinNotesComponent;
-  let fixture: ComponentFixture<PinNotesComponent>;
+describe('ViewnoteComponent', () => {
+  let component: ViewnoteComponent;
+  let fixture: ComponentFixture<ViewnoteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PinNotesComponent ]
+      declarations: [ ViewnoteComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PinNotesComponent);
+    fixture = TestBed.createComponent(ViewnoteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

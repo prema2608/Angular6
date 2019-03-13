@@ -1,9 +1,7 @@
-import { Component, OnInit, Output } from '@angular/core';
-
-import { MatDialog } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NoteService } from 'src/app/core/services/note.service';
 import { Subject } from 'rxjs';
+import { HelperClassService } from 'src/app/core/services/helper-class.service';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +10,9 @@ import { Subject } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   parentSubject: Subject<any> = new Subject();
+  public grid = false;
 
-  constructor(private service: NoteService, private dialog: MatDialog,
-    private router: Router) { }
+  constructor( private router: Router,private helperClass:HelperClassService ) { }
 
   ngOnInit() {
 
@@ -27,5 +25,9 @@ export class HomeComponent implements OnInit {
 
   }
 
+  public viewGrid() {
+    this.grid = !this.grid;
+    this.helperClass.setTheme(this.grid);
+}
 
 }

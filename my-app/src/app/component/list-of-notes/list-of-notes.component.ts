@@ -14,13 +14,13 @@ export interface DialogData {
 @Component({
   selector: 'app-list-of-notes',
   templateUrl: './list-of-notes.component.html',
-  styleUrls: ['./list-of-notes.component.css']
+  styleUrls: ['./list-of-notes.component.scss']
 })
 export class ListOfNotesComponent implements OnInit {
 
   @Input() notes
   @Output() updateEvent = new EventEmitter();
-  note: Note[] = [];
+  @Input() public grid = false;
   public labels: labels[] = [];
   public newLabels: labels[] = [];
   public filter: '';
@@ -28,7 +28,7 @@ export class ListOfNotesComponent implements OnInit {
 
   constructor(private service: NoteService, public dialog: MatDialog) { }
   ngOnInit() {
-    this.retriveNotes();
+    // this.retriveNotes();
     this.retriveLabels();
   }
 
@@ -44,44 +44,36 @@ export class ListOfNotesComponent implements OnInit {
     });
   }
 
-  refresh(event) {
-    if (event) {
-      this.retriveNotes;
-    }
-  }
-
-  
-  inTrash(note) {
+  inTrash(key,note) {
     note.inTrash = 1;
     console.log(note)
-    this.service.updateNote(note, note.noteId).subscribe(response => {
-      this.retriveNotes();
-      console.log("updated");
-    })
+    const data = {key,note};
+    this.updateEvent.emit(data);
+    // this.service.updateNote(note, note.noteId).subscribe(response => {
+      //this.retriveNotes();
+    //   console.log("updated");
+    // })
   }
-  inArchive(note) {
-    note.archive = 1;
+  inArchive(key,note) {
+    note.pinned = 0;
+    note.archive = key == 'archive' ? 1 : 0;
     console.log(note)
-    this.service.updateNote(note, note.noteId).subscribe(response => {
-      this.retriveNotes()
-      console.log("updated");
-    })
+    const data = {key,note};
+    this.updateEvent.emit(data);
+    // this.service.updateNote(note, note.noteId).subscribe(response => {
+    //   this.retriveNotes()
+    //   console.log("updated");
+    // })
   }
-  pinned(note) {
-    note.pinned = 1;
+  pinned(key,note) {
+    note.pinned = key == 'pinned'? 1 : 0;
     console.log(note)
-    this.service.updateNote(note, note.noteId).subscribe(response => {
-      this.retriveNotes()
-      console.log("pinned");
-    })
-  }
-
-  backupNote(note) {
-    note.inTrash = 0;
-    console.log(note)
-    this.service.updateNote(note, note.noteId).subscribe(response => {
-      console.log("updated");
-    })
+    const data = {key,note};
+    this.updateEvent.emit(data);
+    // this.service.updateNote(note, note.noteId).subscribe(response => {
+    //   this.retriveNotes()
+    //   console.log("pinned");
+    // })
   }
 
   public retriveNotes() {
@@ -129,12 +121,13 @@ export class ListOfNotesComponent implements OnInit {
 
   remove(label, notes) {
     this.service.deletenotelabel(label.labelId, notes.noteId).subscribe(response => {
-      // const data = { notes }
-      // this.updateEvent.emit(data);
+      const data = { notes }
+      this.updateEvent.emit(data);
       console.log(response);
     }, (error) => console.log(error));
   }
 
+}
   // public labelFilter(event, noteLabels) {
   //   event.stopPropagation();
   //   console.log(noteLabels);
@@ -153,7 +146,6 @@ export class ListOfNotesComponent implements OnInit {
   //       k++;
   //     }
   //   }
-  // }
+  // }\
 
 
-}

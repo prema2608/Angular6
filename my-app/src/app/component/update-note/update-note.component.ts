@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { DialogData, ListOfNotesComponent } from '../list-of-notes/list-of-notes.component';
+import { DialogData } from '../list-of-notes/list-of-notes.component';
 import { NoteService } from 'src/app/core/services/note.service';
 
 @Component({
