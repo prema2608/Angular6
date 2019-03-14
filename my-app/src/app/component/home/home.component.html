@@ -27,12 +27,13 @@
 
 
 
-      <!-- List & Grid -->
-      <button mat-icon-button  (click)="viewGrid()" fxHide.xs="true" fxShow.sm="false" fxShow.md="true" fxShow.lg="true">
-          <mat-icon  *ngIf="!grid">view_stream</mat-icon>
+        <!-- List & Grid -->
+        <button mat-icon-button (click)="viewGrid()" fxHide.xs="true" fxShow.sm="false" fxShow.md="true"
+          fxShow.lg="true">
+          <mat-icon *ngIf="!grid">view_stream</mat-icon>
           <mat-icon *ngIf="grid">view_module</mat-icon>
         </button>
-  
+
         <!-- <a mat-button r routerLinkActive="active" matTooltip="Lists" title="lists">
           <mat-icon>dns</mat-icon>
         </a> -->

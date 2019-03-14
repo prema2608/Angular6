@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteService } from 'src/app/core/services/note.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
-import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { Note } from 'src/app/core/models/note';
 import { TrashDialogboxComponent } from '../trash-dialogbox/trash-dialogbox.component';
 
@@ -67,7 +66,6 @@ export class TrashNoteComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // this.service.updateNote(notes, notes.noteId)
     });
   }
 }

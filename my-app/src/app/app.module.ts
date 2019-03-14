@@ -18,6 +18,8 @@ import { MapLabelNotesComponent } from './component/map-label-notes/map-label-no
 import { SearchFilterPipe } from './core/pipe/search-filter.pipe';
 import { TrashDialogboxComponent } from './component/trash-dialogbox/trash-dialogbox.component';
 import { ViewnoteComponent } from './component/viewnote/viewnote.component';
+import { SearchComponent } from './component/search/search.component';
+import { NoteSearchPipe } from './pipe/note-search.pipe';
 
 
 @NgModule({
@@ -37,7 +39,10 @@ import { ViewnoteComponent } from './component/viewnote/viewnote.component';
     MapLabelNotesComponent,
     SearchFilterPipe,
     TrashDialogboxComponent,
-    ViewnoteComponent
+    ViewnoteComponent,
+    SearchComponent,
+    NoteSearchPipe,
+    
    
 
   ],

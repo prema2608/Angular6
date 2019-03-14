@@ -1,17 +1,23 @@
-.color{
-    background-color:paleturquoise;
-    width: 350x;
-    height: 400px;
+// .color{
+//     background-color:paleturquoise;
+//     width: 100x;
+//     height: 400px;
     
-}
+// }
 .mat-icon {
     font-size: 20px;
+    padding:  10px;
   }
   .mat-button{
-    margin: -10x;
+    padding: 0 4px;
+    min-width: 46px !important;;
   }
 
-
+.margin
+{
+  right:10px;
+  
+}
   .mat-menu
   {
     width: 350px;
@@ -39,7 +45,7 @@
         flex-wrap: wrap;
         justify-content: space-around;
         mat-card{
-          width:500px;
+          width:300px;
           position: relative;
         }
       }

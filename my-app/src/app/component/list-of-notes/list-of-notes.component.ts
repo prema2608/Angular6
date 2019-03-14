@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
-import { Note } from 'src/app/core/models/note';
 import { NoteService } from 'src/app/core/services/note.service';
 import { MatDialog } from '@angular/material';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
@@ -119,15 +118,35 @@ export class ListOfNotesComponent implements OnInit {
   }
 
 
-  remove(label, notes) {
-    this.service.deletenotelabel(label.labelId, notes.noteId).subscribe(response => {
-      const data = { notes }
+  remove(note, label) {
+    this.service.deletenotelabel(note.noteId, label.labelId).subscribe(response => {
+      const data = { note }
       this.updateEvent.emit(data);
       console.log(response);
     }, (error) => console.log(error));
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // public labelFilter(event, noteLabels) {
   //   event.stopPropagation();
   //   console.log(noteLabels);

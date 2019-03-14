@@ -9,13 +9,13 @@
             </mat-card-title>
           </mat-card-header>
           <div>
-            <a mat-button *ngIf="!note.pinned" (click)="pinned('pinned',note)" routerLinkActive="active"
+            <a mat-button class="margin" *ngIf="!note.pinned" (click)="pinned('pinned',note)" routerLinkActive="active"
               matTooltip="colorize" title="pin note">
-              <mat-icon>colorize</mat-icon>
+              <img src="./assets/images/pin.jpg">
             </a>
-            <a mat-button *ngIf="note.pinned" (click)="pinned('unpin',note)" routerLinkActive="active"
+            <a mat-button class="margin"  *ngIf="note.pinned" (click)="pinned('unpin',note)" routerLinkActive="active"
               matTooltip="colorize" title="pin note">
-              <mat-icon>colorize</mat-icon>
+              <img src="./assets/images/pin.jpg">
             </a>
           </div>
         </mat-toolbar-row>
@@ -24,7 +24,7 @@
         </mat-card-content>
 
         <mat-chip-list #chipList>
-          <mat-chip *ngFor="let label of note.labelList" [removable]="removable" (removed)="remove(label,note)">
+          <mat-chip *ngFor="let label of note.labelList" [removable]="removable" (removed)="remove(note,label)">
             {{label.labelName}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
           </mat-chip>
@@ -68,7 +68,7 @@
             title="more">
             <i id="accountcircle" class="material-icons">more_vert</i></button>
           <mat-menu #more="matMenu" class="morecard">
-            <button mat-button (click)="inTrash(note)">Delete Note</button>
+            <button mat-button (click)="inTrash('inTrash',note)">Delete Note</button>
 
 
             <div>

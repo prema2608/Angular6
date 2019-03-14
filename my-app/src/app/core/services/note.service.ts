@@ -127,25 +127,25 @@ export class NoteService {
   }
 
 
-  // deletenotelabel(labelId, noteId) {
-  //   return this.http.deleteService(environment.noteurl+'deletelabeltonote/' ,{
-  //     params: {
-  //       noteId: noteId,
-  //       labelId: labelId
-  //     },
-  //     observe: 'response'
-  //   }
-  //   )
-  // }
-
   deletenotelabel(noteId, labelId) {
-    var httpheaders =
-    {
-      headers: new HttpHeaders({
-        // 'Content-Type': 'application/json',
-        'noteId': noteId
-      })
+    return this.http.deleteService(environment.noteurl + 'deletelabeltonote', {
+      params: {
+        noteId: noteId,
+        labelId: labelId
+      },
+      observe: 'response'
     }
-    return this.http.deleteService(environment.noteurl + 'delete-label-to-note/' + labelId, httpheaders)
+    )
   }
+
+  //   deletenotelabel(noteId, labelId) {
+  //     var httpheaders =
+  //     {
+  //       headers: new HttpHeaders({
+  //         // 'Content-Type': 'application/json',
+  //         'noteId': noteId
+  //       })
+  //     }
+  //     return this.http.deleteService(environment.noteurl + 'delete-label-to-note/' + labelId, httpheaders)
+  //   }
 }

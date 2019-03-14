@@ -8,7 +8,7 @@
         <span>Notes</span>
       </button>
       <!-- remainder -->
-      <button mat-menu-item >
+      <button mat-menu-item>
         <mat-icon>notifications</mat-icon>
         <span>Remainder</span>
       </button>
@@ -20,12 +20,12 @@
       </span>
 
       <div *ngFor="let label of labels">
-          <button mat-menu-item>
+        <button mat-menu-item>
           <mat-icon> label_outline</mat-icon>
-           {{label.labelName}}
-           </button>
-          </div>
-        
+          {{label.labelName}}
+        </button>
+      </div>
+
       <!-- edit labels  -->
       <button mat-menu-item (click)=openDialog()>
         <mat-icon>edit</mat-icon>
@@ -47,10 +47,6 @@
 
   </mat-sidenav>
   <mat-sidenav-content>
-
-
     <router-outlet></router-outlet>
-
-
   </mat-sidenav-content>
 </mat-sidenav-container>
