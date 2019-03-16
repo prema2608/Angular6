@@ -11,6 +11,14 @@ mat-sidenav {
    main {
     padding: 10px;
 }
-.mat-menu-item:hover{
-background-color: rgb(238, 188, 94);
+/* .mat-menu-item:hover{
+background-color: rgb(254, 239, 195);
+border-bottom-right-radius: 25px;
+border-top-right-radius: 25px;
+} */
+.cdk-focused
+{
+    background-color: rgb(254, 239, 195);
+border-bottom-right-radius: 25px;
+border-top-right-radius: 25px
 }

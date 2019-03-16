@@ -19,7 +19,7 @@ import { SearchFilterPipe } from './core/pipe/search-filter.pipe';
 import { TrashDialogboxComponent } from './component/trash-dialogbox/trash-dialogbox.component';
 import { ViewnoteComponent } from './component/viewnote/viewnote.component';
 import { SearchComponent } from './component/search/search.component';
-import { NoteSearchPipe } from './pipe/note-search.pipe';
+import { NoteSearchPipe } from './core/pipe/note-search.pipe';
 
 
 @NgModule({
@@ -40,11 +40,8 @@ import { NoteSearchPipe } from './pipe/note-search.pipe';
     SearchFilterPipe,
     TrashDialogboxComponent,
     ViewnoteComponent,
-    SearchComponent,
-    NoteSearchPipe,
+    SearchComponent,NoteSearchPipe
     
-   
-
   ],
   imports: [
     BrowserModule,

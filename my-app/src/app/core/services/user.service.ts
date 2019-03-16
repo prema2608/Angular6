@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,7 @@ login (user)
   
 }
 
-register (user)
-{
+register (user): Observable<any>{
   return this.http.postService(environment.url+'register',user);
 }
 }

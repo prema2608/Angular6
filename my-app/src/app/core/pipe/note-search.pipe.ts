@@ -17,12 +17,14 @@ export class NoteSearchPipe implements PipeTransform {
       });
     }
     // else if (searchValue) {
-    //   return notes.filter(({ labels }) => {
+    //   return notes.filter(({ notes }) => {
     //     return labels.filter(({ labelName }) =>
     //       labelName.toLowerCase().includes(searchValue.toLowerCase()));
     //   });
-    //}
+   // }
     else
       return null;
-}
+  }
+
+
 }

@@ -11,11 +11,11 @@
           <div>
             <a mat-button class="margin" *ngIf="!note.pinned" (click)="pinned('pinned',note)" routerLinkActive="active"
               matTooltip="colorize" title="pin note">
-              <img src="./assets/images/pin.jpg">
+              <img src="./assets/images/pin.jpg" style="margin-left: 250%">
             </a>
             <a mat-button class="margin"  *ngIf="note.pinned" (click)="pinned('unpin',note)" routerLinkActive="active"
               matTooltip="colorize" title="pin note">
-              <img src="./assets/images/pin.jpg">
+              <img src="./assets/images/pin.jpg" style="margin-left: 250%">
             </a>
           </div>
         </mat-toolbar-row>

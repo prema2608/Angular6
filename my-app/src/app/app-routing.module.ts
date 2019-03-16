@@ -8,6 +8,7 @@ import { TrashNoteComponent } from './component/trash-note/trash-note.component'
 import { ArchiveNoteComponent } from './component/archive-note/archive-note.component';
 import { EditLabelsComponent } from './component/edit-labels/edit-labels.component';
 import { ViewnoteComponent } from './component/viewnote/viewnote.component';
+import { SearchComponent } from './component/search/search.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,7 +20,8 @@ const appRoutes: Routes = [
         {path: '', redirectTo:'viewnote' ,pathMatch:'full'},
         {path: 'trash', component: TrashNoteComponent},
         { path: 'archive-note',component:ArchiveNoteComponent},
-        {path:'edit-labels',component:EditLabelsComponent}
+        {path:'edit-labels',component:EditLabelsComponent},
+        {path: 'search', component: SearchComponent},
       ]
   },
   { path: '**', redirectTo: 'login', pathMatch: 'full' }

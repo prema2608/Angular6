@@ -28,7 +28,7 @@
         <mat-panel-description>
           <input matInput class="note" placeholder="Title" formControlName="title"
             [ngClass]="{ 'is-invalid': submitted && f.title.errors }" style="width: 500 px;">
-          <img src="./assets/images/pin.jpg" title="pin note">
+          <img src="./assets/images/pin.jpg" title="pin note" style="margin-left: 60%">
 
         </mat-panel-description>
         <mat-panel-description>
@@ -91,20 +91,3 @@
     </mat-accordion>
   </form>
 </div>
-<!-- <div>
-
-  <app-pin-notes></app-pin-notes>
-  <app-list-of-notes></app-list-of-notes>
-</div> -->
-
-
-<!-- <div class="container" fxLayout="column" fxLayoutGap="10%" fxLayoutAlign="center center">
-  <div fxFlex="80%">
-    <app-create-note (eventCreate)="refresh($event)"></app-create-note>
-    <p>Pinned Notes</p>
-    <app-pin-notes class="pinnedNotes" [notes]="notes | noteFilter:'pinned'" (updateEvent)="onClickUpdate($event)" [grid]="grid" (updateNoteEvent)="updateNoteToGrid($event)"></app-pin-notes>
-    <p>Others</p>
-    <app-pin-notes [notes]="notes | noteFilter" (updateEvent)="onClickUpdate($event)"[grid]="grid" (updateNoteEvent)="updateNoteToGrid($event)"></app-pin-notes>
-  
-</div>
-</div> -->
