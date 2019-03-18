@@ -25,10 +25,12 @@ export class HttpService {
   getService(url,header):Observable<any>{
     return this.http.get<any>(url,header);
   }
- 
-
 
   deleteService(url,header){
     return this.http.delete<any>(url,header);
   }
+
+  postToUploadImage(url,object,header){
+    return this.http.post<any>(url,object,header);
+}
 }

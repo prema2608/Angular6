@@ -12,7 +12,7 @@ import { HelperClassService } from 'src/app/core/services/helper-class.service';
 export class SearchComponent implements OnInit {
   public notes: Note[] = [];
   public grid = false;
-  public searchString = '';
+  public searchValue = '';
 
   constructor(private noteService: NoteService, private snackBar: MatSnackBar,
     public dialog: MatDialog, private helperService:HelperClassService) { }
@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit {
       this.grid = resp
     );
     this.helperService.getSearchItem().subscribe((resp) =>
-      this.searchString = resp);
+      this.searchValue = resp);
   }
 
   public onUpdateNote(data) {

@@ -1,12 +1,12 @@
 
 <div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
-  <div *ngIf="searchString==''">
-    Enter something on search bar
+  <div *ngIf="searchValue==''">
+   Search something here........
   </div>
 
-  <div fxFlex="40%" *ngIf="searchString!==''">
-    Based on note title
-    <app-list-of-notes [notes]="notes | noteSearch:searchString" [grid]="grid" (updateNoteEvent)="onUpdateNote($event)">
+  <div fxFlex="40%" *ngIf="searchValue!==''">
+    Enter valid Details to search 
+    <app-list-of-notes [notes]="notes | noteSearch:searchValue" [grid]="grid" (updateNoteEvent)="onUpdateNote($event)">
     </app-list-of-notes>
   </div>
 </div>
