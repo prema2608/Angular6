@@ -19,8 +19,9 @@
           </button>
         </div>
         <div fxFlex="100%">
-          <input matInput id="input" type="text" s placeholder="Search...." style="width: 750px;height: 40px;border-radius: 10px;"
-            name="searchValue" (click)="searchtest()" [(ngModel)]="searchValue">
+          <input matInput id="input" type="text" s placeholder="Search...."
+            style="width: 750px;height: 40px;border-radius: 10px;" name="searchValue" (click)="searchtest()"
+            [(ngModel)]="searchValue">
         </div>
         <div fxLayoutGap="3%">
           <button mat-button *ngIf="searchValue" matSuffix mat-icon-button class="button" (click)="clearSearch()">
@@ -28,18 +29,19 @@
           </button>
         </div>
       </div>
-      <div >
+      <div>
         <a mat-button r routerLinkActive="active" matTooltip="refresh" title="refresh" style="margin-left: 25%">
           <mat-icon>refresh</mat-icon>
         </a>
         <!-- List & Grid -->
-        <button mat-icon-button  (click)="viewGrid()" fxHide.xs="true" fxShow.sm="false" fxShow.md="true"
-          fxShow.lg="true"  style="margin-right: 25%">
+        <button mat-icon-button (click)="viewGrid()" fxHide.xs="true" fxShow.sm="false" fxShow.md="true"
+          fxShow.lg="true" style="margin-right: 25%">
           <mat-icon *ngIf="!grid">view_stream</mat-icon>
           <mat-icon *ngIf="grid">view_module</mat-icon>
         </button>
       </div>
-      <button mat-button [matMenuTriggerFor]="settings" matTooltip="Settings" title="Settings" style="margin-left: 3%;margin-right: 1%">
+      <button mat-button [matMenuTriggerFor]="settings" matTooltip="Settings" title="Settings"
+        style="margin-left: 3%">
         <mat-icon>settings</mat-icon>
       </button>
       <mat-menu #settings="matMenu">
@@ -60,11 +62,18 @@
         </button>
       </mat-menu>
 
-      <mat-menu #menu="matMenu" class="morecard">
+
+      <button  mat-icon-button   [matMenuTriggerFor]="account" matTooltip="Account" title="Account"
+        >
+        <!-- <mat-icon *ngIf="imageData.imageSrc===null">account_circle</mat-icon> -->
+        <!-- style="margin-left: 3%;margin-right: 1%" -->
+            <img class="imagestyle" [src]="imageData.imageSrc" *ngIf="imageData.imageSrc!==null" >
+      </button>
+      <mat-menu #account="matMenu" class="morecard">
         <div>
           <button mat-menu-item (click)="openDialog()">
-            <mat-icon>account_circle</mat-icon>Change Picture
-          </button>
+            Change Image
+            </button>
         </div>
         <mat-divider></mat-divider>
         <div fxLayout="row">
@@ -72,21 +81,7 @@
             <mat-icon>logout</mat-icon>Sign out
           </button>
         </div>
-</mat-menu>
-
-      <!-- <button mat-icon-button [matMenuTriggerFor]="user" matTooltip="User Details" title="User Details">
-        <img src="./assets/images/premapic.jpg">
-      </button> -->
-
-      <!-- <mat-menu #user="matMenu">
-        <button mat-menu-item>
-          <mat-icon>logout</mat-icon>
-          <a mat-button routerLink="/login">
-            <span>Logout</span>
-          </a>
-        </button>
-      </mat-menu> -->
-
+      </mat-menu>
     </mat-toolbar-row>
   </mat-toolbar>
 
@@ -94,13 +89,3 @@
 
 
 <app-side-navibar [parentSubject]="parentSubject"></app-side-navibar>
-
-
-
-
-
-
-
-
-
-

@@ -20,6 +20,8 @@ import { TrashDialogboxComponent } from './component/trash-dialogbox/trash-dialo
 import { ViewnoteComponent } from './component/viewnote/viewnote.component';
 import { SearchComponent } from './component/search/search.component';
 import { NoteSearchPipe } from './core/pipe/note-search.pipe';
+import { PhotosComponent } from './component/photos/photos.component';
+import { ColorPaletComponent } from './component/color-palet/color-palet.component';
 
 
 @NgModule({
@@ -40,7 +42,10 @@ import { NoteSearchPipe } from './core/pipe/note-search.pipe';
     SearchFilterPipe,
     TrashDialogboxComponent,
     ViewnoteComponent,
-    SearchComponent,NoteSearchPipe
+    SearchComponent,
+    NoteSearchPipe,
+    PhotosComponent,
+    ColorPaletComponent
     
   ],
   imports: [
@@ -48,7 +53,7 @@ import { NoteSearchPipe } from './core/pipe/note-search.pipe';
     AppRoutingModule,
     AppMaterialModule
   ],
-  entryComponents:[UpdateNoteComponent,EditLabelsComponent,TrashDialogboxComponent],
+  entryComponents:[UpdateNoteComponent,EditLabelsComponent,TrashDialogboxComponent,PhotosComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

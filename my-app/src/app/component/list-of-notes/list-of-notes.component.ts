@@ -126,7 +126,13 @@ export class ListOfNotesComponent implements OnInit {
     }, (error) => console.log(error));
   }
 
+
+  updateColor(data) {
+    this.updateEvent.emit(data);
+  }
+
 }
+
 
 
 

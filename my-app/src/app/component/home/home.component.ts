@@ -63,8 +63,8 @@ export class HomeComponent implements OnInit {
     this.userService.downloadImage().subscribe(resp => {
       this.user = resp
       console.log(this.user)
-      if (this.user.profilePicture != null) {
-        const url = `data:${this.user.contentType};base64,${this.user.profilePicture}`;
+      if (this.user.display_pic != null) {
+        const url = `data:${this.user.contentType};base64,${this.user.display_pic}`;
         this.imageData = {
           imageSrc: this.sanitizer.bypassSecurityTrustUrl(url)
         }

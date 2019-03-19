@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material';
 export class CreateNoteComponent implements OnInit {
   createNote: FormGroup;
   submitted = false;
-  public showHeader = true;
+  // public showHeader = true;
   token = localStorage.getItem('token')
   @Input() notes
   constructor(private service: NoteService, private formBuilder: FormBuilder, private snackbar: MatSnackBar) { }

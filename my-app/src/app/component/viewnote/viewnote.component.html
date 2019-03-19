@@ -2,13 +2,13 @@
   <div>
     <app-create-note></app-create-note>
   </div>
-  <div class="color">
+  <div class="color" >
     PINNED
     <app-list-of-notes [notes]="notes | noteFilter: 'pinned' " [grid]="grid" (updateEvent)="updateEvent($event)">
     </app-list-of-notes>
   </div>
 
-  <div>
+  <div class="color">
     OTHERS
     <app-list-of-notes [notes]="notes | noteFilter" [grid]="grid" (updateEvent)="updateEvent($event)">
     </app-list-of-notes>

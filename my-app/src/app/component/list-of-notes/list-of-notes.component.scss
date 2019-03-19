@@ -1,9 +1,10 @@
-// .color{
-//     background-color:paleturquoise;
-//     width: 100x;
-//     height: 400px;
-    
-// }
+.button{
+  position: absolute;
+  right: 10px;
+  height: 25px;
+  width: 25px;
+}
+
 .mat-icon {
     font-size: 20px;
     padding:  10px;
@@ -37,6 +38,10 @@
         mat-card{
           width:300px;
           position: relative;
+         
+          padding: 5px;
+          box-shadow: 0 14px 28px rgba(110, 108, 108, 0.22), 0 10px 10px rgba(110, 108, 108, 0.22);
+        
         }
       }
       &-list-view {
@@ -47,6 +52,7 @@
         mat-card{
           width:300px;
           position: relative;
+          box-shadow: 0 14px 28px rgba(110, 108, 108, 0.22), 0 10px 10px rgba(110, 108, 108, 0.22);
         }
       }
     }
