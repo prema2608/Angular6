@@ -21,4 +21,15 @@ border-top-right-radius: 25px;
     background-color: rgb(254, 239, 195);
 border-bottom-right-radius: 25px;
 border-top-right-radius: 25px
+
+}
+.sidecolor
+{
+    border-right: 3px solid rgb(214, 83, 23);
+}
+.image
+{
+    opacity:.6;  
+      margin-right: 16px;
+        vertical-align: middle;
 }

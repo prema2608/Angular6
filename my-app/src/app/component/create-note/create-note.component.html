@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="center center">
   <form [formGroup]="createNote">
     <mat-accordion class="mat-accordion">
-      <mat-expansion-panel [expanded]=true (opened)="showHeader = false" 
+      <mat-expansion-panel [expanded]=false (opened)="showHeader = false" 
         (closed)="showHeader = true" (closed)="onSubmit(createNote.value)" hideToggle="true">
         <mat-expansion-panel-header>
           <ng-container *ngIf="showHeader;else tempTtext">
@@ -26,9 +26,10 @@
           </ng-template>
         </mat-expansion-panel-header>
         <mat-panel-description>
-          <input matInput class="note" placeholder="Title" formControlName="title"
-            [ngClass]="{ 'is-invalid': submitted && f.title.errors }" style="width: 500 px;">
-          <img src="./assets/images/pin.jpg" title="pin note" style="margin-left: 60%">
+          <input matInput class="margin" placeholder="Title" formControlName="title"
+            [ngClass]="{ 'is-invalid': submitted && f.title.errors }" style="width: 500px">
+          <img src="./assets/images/pinn.jpg" title="pin note" style="height:25px;margin-left: 50px;
+          margin-bottom: 10px">
 
         </mat-panel-description>
         <mat-panel-description>

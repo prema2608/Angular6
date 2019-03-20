@@ -9,6 +9,7 @@ import { ArchiveNoteComponent } from './component/archive-note/archive-note.comp
 import { EditLabelsComponent } from './component/edit-labels/edit-labels.component';
 import { ViewnoteComponent } from './component/viewnote/viewnote.component';
 import { SearchComponent } from './component/search/search.component';
+import { ReminderComponent } from './component/reminder/reminder.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
         { path: 'archive-note',component:ArchiveNoteComponent},
         {path:'edit-labels',component:EditLabelsComponent},
         {path: 'search', component: SearchComponent},
+        {path:'reminder',component:ReminderComponent}
       ]
   },
   { path: '**', redirectTo: 'login', pathMatch: 'full' }

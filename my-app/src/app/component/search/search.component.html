@@ -1,9 +1,11 @@
+      <mat-icon>search</mat-icon>
 
 <div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
-  <div *ngIf="searchValue==''">
+  <div  class="align" *ngIf="searchValue==''">
    Search something here........
   </div>
 
+ 
   <div fxFlex="40%" *ngIf="searchValue!==''">
     Enter valid Details to search 
     <app-list-of-notes [notes]="notes | noteSearch:searchValue" [grid]="grid" (updateNoteEvent)="onUpdateNote($event)">

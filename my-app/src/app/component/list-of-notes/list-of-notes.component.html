@@ -15,7 +15,7 @@
             </a>
             <a mat-button class="margin" *ngIf="note.pinned" (click)="pinned('unpin',note)" routerLinkActive="active"
               matTooltip="colorize" title="pin note">
-              <img src="./assets/images/pinn.jpg"  height="25px">
+              <img src="./assets/images/pinn.jpg" height="25px">
             </a>
           </div>
         </mat-toolbar-row>
@@ -45,7 +45,7 @@
           </div>
 
           <app-color-palet [newNote]="note" (colorChange)="updateColor($event)"></app-color-palet>
-     
+
           <div>
             <a mat-button routerLinkActive="active" matTooltip="Add image" title="Add image">
               <mat-icon>photo</mat-icon>

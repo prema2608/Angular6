@@ -40,8 +40,7 @@
           <mat-icon *ngIf="grid">view_module</mat-icon>
         </button>
       </div>
-      <button mat-button [matMenuTriggerFor]="settings" matTooltip="Settings" title="Settings"
-        style="margin-left: 3%">
+      <button mat-button [matMenuTriggerFor]="settings" matTooltip="Settings" title="Settings" style="margin-left: 3%">
         <mat-icon>settings</mat-icon>
       </button>
       <mat-menu #settings="matMenu">
@@ -63,17 +62,17 @@
       </mat-menu>
 
 
-      <button  mat-icon-button   [matMenuTriggerFor]="account" matTooltip="Account" title="Account"
-        >
-        <!-- <mat-icon *ngIf="imageData.imageSrc===null">account_circle</mat-icon> -->
-        <!-- style="margin-left: 3%;margin-right: 1%" -->
-            <img class="imagestyle" [src]="imageData.imageSrc" *ngIf="imageData.imageSrc!==null" >
+      <button mat-icon-button [matMenuTriggerFor]="account" matTooltip="Account" title="Account">
+        <img class="imagestyle" [src]="imageData.imageSrc" *ngIf="imageData.imageSrc!==null">
       </button>
       <mat-menu #account="matMenu" class="morecard">
         <div>
+          <button mat-icon-button [matMenuTriggerFor]="account" matTooltip="Account" title="Account">
+            <img class="imagestyle" [src]="imageData.imageSrc" *ngIf="imageData.imageSrc!==null">
+          </button>
           <button mat-menu-item (click)="openDialog()">
             Change Image
-            </button>
+          </button>
         </div>
         <mat-divider></mat-divider>
         <div fxLayout="row">
@@ -84,8 +83,6 @@
       </mat-menu>
     </mat-toolbar-row>
   </mat-toolbar>
-
 </div>
-
 
 <app-side-navibar [parentSubject]="parentSubject"></app-side-navibar>

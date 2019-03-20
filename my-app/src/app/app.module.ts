@@ -22,6 +22,7 @@ import { SearchComponent } from './component/search/search.component';
 import { NoteSearchPipe } from './core/pipe/note-search.pipe';
 import { PhotosComponent } from './component/photos/photos.component';
 import { ColorPaletComponent } from './component/color-palet/color-palet.component';
+import { ReminderComponent } from './component/reminder/reminder.component';
 
 
 @NgModule({
@@ -45,7 +46,9 @@ import { ColorPaletComponent } from './component/color-palet/color-palet.compone
     SearchComponent,
     NoteSearchPipe,
     PhotosComponent,
-    ColorPaletComponent
+    ColorPaletComponent,
+    ReminderComponent,
+    
     
   ],
   imports: [

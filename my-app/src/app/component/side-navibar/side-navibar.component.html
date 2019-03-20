@@ -1,6 +1,7 @@
 <!-- side navigation bar -->
+
 <mat-sidenav-container class="example-container">
-  <mat-sidenav #drawer mode="side" opened role="navigation">
+  <mat-sidenav #drawer mode="side" opened role="navigation" class="sidecolor">
     <mat-nav-list>
       <!-- notes -->
       <button mat-menu-item [routerLink]="['/home/viewnote']">
@@ -8,8 +9,8 @@
         <span>Notes</span>
       </button>
       <!-- remainder -->
-      <button mat-menu-item>
-        <mat-icon>notifications</mat-icon>
+      <button mat-menu-item [routerLink]="['/home/reminder']">
+        <mat-icon>notifications_none</mat-icon>
         <span>Remainder</span>
       </button>
       <mat-divider></mat-divider><br>
@@ -34,7 +35,9 @@
       <mat-divider></mat-divider>
       <!-- archive -->
       <button mat-menu-item [routerLink]="['/home/archive-note']">
-        <mat-icon>archive</mat-icon>
+        <!-- <mat-icon>archive</mat-icon> -->
+        <img style="opacity:.6;    margin-right: 16px;
+        vertical-align: middle;" src="./assets/images/outline-archive-24px.svg"/>
         <span>Archive</span>
       </button>
       <!-- delete -->

@@ -1,5 +1,7 @@
-.note{
-    border: 0ch
+.margin{
+  
+  right:10px;
+  border: 0ch;
 }
 
 .mat-expansion-panel{
@@ -8,8 +10,9 @@ border:0ch
 .mat-accordion{
   margin-top: 20px;
   padding: 20px;
-    width: 200px;
+    width: 300px;
     height: 10px;
+   
 }
 .mat-icon {
     font-size: 20px;
