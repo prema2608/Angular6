@@ -3,6 +3,7 @@ import { NoteService } from 'src/app/core/services/note.service';
 import { MatDialog } from '@angular/material';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { labels } from 'src/app/core/models/labels';
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
 
 
 export interface DialogData {
@@ -130,6 +131,20 @@ export class ListOfNotesComponent implements OnInit {
   updateColor(data) {
     this.updateEvent.emit(data);
   }
+
+  public dailogCollaborator(note) {
+    const dialogRef = this.dialog.open(CollaboratorComponent, {
+      width: '500px',
+      data: note
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      const data = { note }
+      this.updateEvent.emit(data);
+      console.log('The dialog was closed');
+    });
+}
+
+
 
 }
 

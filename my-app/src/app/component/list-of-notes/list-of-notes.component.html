@@ -4,7 +4,7 @@
       <mat-card class="head" [style.background-color]="note.color">
         <mat-toolbar-row>
           <mat-card-header>
-            <mat-card-title (click)=openDialog(note)>
+            <mat-card-title  (click)=openDialog(note)>
               {{note.title}}
             </mat-card-title>
           </mat-card-header>
@@ -28,7 +28,7 @@
           <mat-chip *ngFor="let label of note.labelList" [removable]="removable" (removed)="remove(note,label)"
             color="note.color">
             {{label.labelName}}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            <mat-icon matChipRemove *ngIf="removable" title="remove label">cancel</mat-icon>
           </mat-chip>
         </mat-chip-list>
         <mat-toolbar-row>
@@ -39,7 +39,8 @@
           </div>
 
           <div>
-            <a mat-button routerLinkActive="active" matTooltip="Collaborator" title="Collaborator">
+            <a mat-button routerLinkActive="active" matTooltip="Collaborator" title="Collaborator"
+            (click)="dailogCollaborator(note)">
               <mat-icon>person_add</mat-icon>
             </a>
           </div>

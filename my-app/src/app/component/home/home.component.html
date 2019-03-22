@@ -19,8 +19,8 @@
           </button>
         </div>
         <div fxFlex="100%">
-          <input matInput id="input" type="text" s placeholder="Search...."
-            style="width: 750px;height: 40px;border-radius: 10px;" name="searchValue" (click)="searchtest()"
+          <input class="search" matInput id="input" type="text" s placeholder="Search...."
+             name="searchValue" (click)="searchtest()"
             [(ngModel)]="searchValue">
         </div>
         <div fxLayoutGap="3%">
@@ -30,14 +30,14 @@
         </div>
       </div>
       <div>
-        <a mat-button r routerLinkActive="active" matTooltip="refresh" title="refresh" style="margin-left: 25%">
+        <a mat-button r routerLinkActive="active" matTooltip="refresh" [routerLink]="['/home/viewnote']" title="refresh" style="margin-left: 25%">
           <mat-icon>refresh</mat-icon>
         </a>
         <!-- List & Grid -->
         <button mat-icon-button (click)="viewGrid()" fxHide.xs="true" fxShow.sm="false" fxShow.md="true"
           fxShow.lg="true" style="margin-right: 25%">
-          <mat-icon *ngIf="!grid">view_stream</mat-icon>
-          <mat-icon *ngIf="grid">view_module</mat-icon>
+          <mat-icon  title="list view" *ngIf="!grid">view_stream</mat-icon>
+          <mat-icon  title="grid view" *ngIf="grid">view_module</mat-icon>
         </button>
       </div>
       <button mat-button [matMenuTriggerFor]="settings" matTooltip="Settings" title="Settings" style="margin-left: 3%">

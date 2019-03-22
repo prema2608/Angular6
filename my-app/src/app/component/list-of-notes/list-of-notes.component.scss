@@ -44,7 +44,7 @@
         mat-card{
           width:300px;
           position: relative;
-         
+          border-radius: 20px;
           padding: 5px;
           box-shadow: 0 14px 28px rgba(110, 108, 108, 0.22), 0 10px 10px rgba(110, 108, 108, 0.22);
         
@@ -57,6 +57,7 @@
         justify-content: space-around;
         mat-card{
           width:300px;
+          border-radius: 20px;
           position: relative;
           box-shadow: 0 14px 28px rgba(110, 108, 108, 0.22), 0 10px 10px rgba(110, 108, 108, 0.22);
         }

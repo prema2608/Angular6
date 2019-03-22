@@ -23,6 +23,9 @@ import { NoteSearchPipe } from './core/pipe/note-search.pipe';
 import { PhotosComponent } from './component/photos/photos.component';
 import { ColorPaletComponent } from './component/color-palet/color-palet.component';
 import { ReminderComponent } from './component/reminder/reminder.component';
+import { DynamicHoverDirective } from './directives/dynamic-hover.directive';
+import { CollaboratorComponent } from './component/collaborator/collaborator.component';
+import { UserfilterPipe } from './core/pipe/userfilter.pipe';
 
 
 @NgModule({
@@ -48,7 +51,10 @@ import { ReminderComponent } from './component/reminder/reminder.component';
     PhotosComponent,
     ColorPaletComponent,
     ReminderComponent,
-    
+    DynamicHoverDirective,
+    CollaboratorComponent,
+    UserfilterPipe,
+
     
   ],
   imports: [
@@ -56,7 +62,8 @@ import { ReminderComponent } from './component/reminder/reminder.component';
     AppRoutingModule,
     AppMaterialModule
   ],
-  entryComponents:[UpdateNoteComponent,EditLabelsComponent,TrashDialogboxComponent,PhotosComponent],
+  entryComponents:[UpdateNoteComponent,EditLabelsComponent,TrashDialogboxComponent,PhotosComponent,
+  CollaboratorComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

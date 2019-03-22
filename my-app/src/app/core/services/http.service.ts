@@ -33,4 +33,24 @@ export class HttpService {
   postToUploadImage(url,object,header){
     return this.http.post<any>(url,object,header);
 }
+
+getUserEmail(url)
+{
+  return this.http.get<any>(url);
+}
+
+postForCollaborator(url,header)
+{
+  return this.http.post<any>(url,{},header);
+}
+
+getCollaborateUser(url)
+{
+  return this.http.get<any>(url,{});
+}
+
+removeCollaborateUser(url)
+{
+  return this.http.delete<any>(url,{});
+}
 }

@@ -10,21 +10,21 @@ import { Observable } from 'rxjs';
 })
 export class NoteService {
   token = localStorage.getItem('token');
-  httpheaders = {
-    headers: new HttpHeaders({
+  public httpheaders() {
+    return {headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'token': this.token
-    })
+      'token': localStorage.getItem('token')
+    })}
   }
 
   constructor(private http: HttpService) { }
 
   retriveNote() {
-    return this.http.getService(environment.noteurl + 'retrivenote', this.httpheaders);
+    return this.http.getService(environment.noteurl + 'retrivenote', this.httpheaders());
   }
 
   createNote(note) {
-    return this.http.postHeaderService(environment.noteurl + 'createnote', note, this.httpheaders)
+    return this.http.postHeaderService(environment.noteurl + 'createnote', note, this.httpheaders())
 
   }
   updateNote(note, id) {
@@ -37,7 +37,7 @@ export class NoteService {
     //     'token': token
     //   })g
     // }
-    return this.http.putService(environment.noteurl + 'updatenote/' + id, note, this.httpheaders)
+    return this.http.putService(environment.noteurl + 'updatenote/' + id, note, this.httpheaders())
 
   }
   deleteNote(noteId) {
@@ -51,7 +51,7 @@ export class NoteService {
         'token': token
       })
     }
-    return this.http.deleteService(environment.noteurl + 'deletenote/' + noteId, this.httpheaders)
+    return this.http.deleteService(environment.noteurl + 'deletenote/' + noteId, this.httpheaders())
   }
 
   ////labels
@@ -66,7 +66,7 @@ export class NoteService {
         'token': token
       })
     }
-    return this.http.postHeaderService(environment.noteurl + 'createlabel', label, this.httpheaders)
+    return this.http.postHeaderService(environment.noteurl + 'createlabel', label, this.httpheaders())
 
   }
 
@@ -79,7 +79,7 @@ export class NoteService {
         'token': token
       })
     }
-    return this.http.getService(environment.noteurl + 'retrievelabel', this.httpheaders);
+    return this.http.getService(environment.noteurl + 'retrievelabel', this.httpheaders());
   }
 
   // updateLabels(labels, id) {
@@ -104,7 +104,7 @@ export class NoteService {
         'token': token
       })
     }
-    return this.http.putService(environment.noteurl + 'updatelabel/' + label.labelId, label, this.httpheaders);
+    return this.http.putService(environment.noteurl + 'updatelabel/' + label.labelId, label, this.httpheaders());
   }
 
   deleteLabels(labelId) {
@@ -118,7 +118,7 @@ export class NoteService {
         'token': token
       })
     }
-    return this.http.deleteService(environment.noteurl + 'deletelabel/' + labelId, this.httpheaders)
+    return this.http.deleteService(environment.noteurl + 'deletelabel/' + labelId, this.httpheaders())
   }
 
 
@@ -138,14 +138,12 @@ export class NoteService {
     )
   }
 
-  //   deletenotelabel(noteId, labelId) {
-  //     var httpheaders =
-  //     {
-  //       headers: new HttpHeaders({
-  //         // 'Content-Type': 'application/json',
-  //         'noteId': noteId
-  //       })
-  //     }
-  //     return this.http.deleteService(environment.noteurl + 'delete-label-to-note/' + labelId, httpheaders)
-  //   }
+  createCollaborator(noteId, userId) {
+    return this.http.postForCollaborator(`${environment.noteurl}createcollaborator/`+noteId+'/'+userId, this.httpheaders())
+  }
+
+  removeCollaborateUser(noteId,userId)
+  {
+    return this.http.removeCollaborateUser(`${environment.noteurl}removecollaborator/`+userId+'/'+noteId);
+}
 }

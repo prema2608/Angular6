@@ -1,16 +1,18 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogData } from '../list-of-notes/list-of-notes.component';
 import { NoteService } from 'src/app/core/services/note.service';
 
+
 @Component({
   selector: 'app-update-note',
   templateUrl: './update-note.component.html',
-  styleUrls: ['./update-note.component.css']
+  styleUrls: ['./update-note.component.scss']
 })
 export class UpdateNoteComponent implements OnInit {
   @Input() notes
+  @Output() updateEvent = new EventEmitter();
   updateNoteForm:FormGroup;
   public mytoken = localStorage.getItem('token'); 
   
@@ -56,6 +58,12 @@ export class UpdateNoteComponent implements OnInit {
   })
    }
 
+
+
+
+  updateColor(data) {
+    this.updateEvent.emit(data);
+  }
 }
 
 

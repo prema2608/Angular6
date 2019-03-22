@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
     this.parentSubject.next();
   }
   signOut() {
+    localStorage.removeItem('token');
     this.router.navigate(['/login'])
 
   }
