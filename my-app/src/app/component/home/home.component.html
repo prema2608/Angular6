@@ -63,12 +63,14 @@
 
 
       <button mat-icon-button [matMenuTriggerFor]="account" matTooltip="Account" title="Account">
-        <img class="imagestyle" [src]="imageData.imageSrc" *ngIf="imageData.imageSrc!==null">
+        <img class="imagestyle" [src]="imageData.imageSrc" *ngIf="imageData.imageSrc!==null" account_circle>
+        <!-- <mat-icon></mat-icon> -->
       </button>
       <mat-menu #account="matMenu" class="morecard">
         <div>
           <button mat-icon-button [matMenuTriggerFor]="account" matTooltip="Account" title="Account">
             <img class="imagestyle" [src]="imageData.imageSrc" *ngIf="imageData.imageSrc!==null">
+          
           </button>
           <button mat-menu-item (click)="openDialog()">
             Change Image

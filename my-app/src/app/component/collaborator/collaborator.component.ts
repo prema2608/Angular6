@@ -38,7 +38,6 @@ import { NoteService } from 'src/app/core/services/note.service';
 
     public getNoteOwner()
     {
-      console.log("haiiii");
       console.log(this.note.userId)
       this.userService.getCollaborateUser(this.note.userId).subscribe(
         (user) => {
