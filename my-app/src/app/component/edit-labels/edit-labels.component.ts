@@ -29,6 +29,10 @@ export class EditLabelsComponent implements OnInit {
     this.dialogRef.close();
   }
         
+
+  closeClick() {
+    this.dialogRef.close();
+  }
 public retriveLabels() {
   this.service.retriveLabels().subscribe((newlabel: any) => {
     this.labels= newlabel;

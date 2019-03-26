@@ -13,5 +13,6 @@ export interface Note {
     labels:labels[];
     remainder:string;
     collaborators:Collaborator[];
+
  }
  

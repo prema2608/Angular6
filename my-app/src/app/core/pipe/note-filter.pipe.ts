@@ -23,7 +23,7 @@ export class NoteFilterPipe implements PipeTransform {
     }
     else if (valid === 'pinned') {
       return notes.filter((item) => {
-        if (!item.inTrash && item.pinned ) {
+        if (!item.inTrash && item.pinned && !item.archive) {
           return item;
         }
       });

@@ -1,28 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatInputModule,  _MatIconMixinBase, MatButtonModule, MatIconModule, MatCheckboxModule} from '@angular/material'; 
-import {MatFormFieldModule} from '@angular/material/form-field';
-import  {MatCardModule} from '@angular/material/card';
+import { MatInputModule, _MatIconMixinBase, MatButtonModule, MatIconModule, MatCheckboxModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { HttpClientModule } from '@angular/common/http';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import { MatMenuModule} from '@angular/material/menu';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatChipsModule} from '@angular/material/chips';
-import { MatDialogModule} from '@angular/material';
-
-
-import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
-    
+
   ],
   imports: [
     CommonModule,
@@ -47,6 +46,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatDialogModule,
     MatCheckboxModule,
     MatAutocompleteModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -68,9 +69,11 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatChipsModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ],
-  
+
 
 })
 export class AppMaterialModule {

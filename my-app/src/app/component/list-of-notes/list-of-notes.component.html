@@ -4,7 +4,7 @@
       <mat-card class="head" [style.background-color]="note.color">
         <mat-toolbar-row>
           <mat-card-header>
-            <mat-card-title  (click)=openDialog(note)>
+            <mat-card-title (click)=openDialog(note)>
               {{note.title}}
             </mat-card-title>
           </mat-card-header>
@@ -25,6 +25,13 @@
           </mat-card-content>
         </div>
         <mat-chip-list #chipList>
+            <mat-chip *ngIf="note.remainder" [removable]="removable" (removed)="removeRemainder(note)"
+            color="note.color">
+            <mat-icon>timer</mat-icon>
+            {{note.remainder| date:'short'}}
+            <mat-icon matChipRemove *ngIf="removable" title="remove label">cancel</mat-icon>
+          </mat-chip>
+
           <mat-chip *ngFor="let label of note.labelList" [removable]="removable" (removed)="remove(note,label)"
             color="note.color">
             {{label.labelName}}
@@ -32,15 +39,29 @@
           </mat-chip>
         </mat-chip-list>
         <mat-toolbar-row>
+
           <div>
-            <a mat-button routerLinkActive="active" matTooltip="Remind me" title="Remind me">
-              <mat-icon>notification_important</mat-icon>
-            </a>
+            <button mat-icon-button matTooltip="Remind me" [matMenuTriggerFor]="remind" title="reminder">
+              <mat-icon>add_alert</mat-icon>
+            </button>
+
+            <mat-menu #remind="matMenu" class="morecard" (click)="$event.stopPropagation()">
+              <div class="input-wrapper">
+                <label>Add a reminder to note:</label>
+                <hr>
+                <input [min]="min" [(ngModel)]="selectedMoment" [owlDateTimeTrigger]="dtPicker1"
+                  [owlDateTime]="dtPicker1" placeholder="select date and time">
+                <owl-date-time #dtPicker1></owl-date-time>
+              </div>
+              <div>
+                <button mat-button class="saveButton" (click)="updateReminder(note,selectedMoment)">Save</button>
+              </div>
+            </mat-menu>
           </div>
 
           <div>
             <a mat-button routerLinkActive="active" matTooltip="Collaborator" title="Collaborator"
-            (click)="dailogCollaborator(note)">
+              (click)="dailogCollaborator(note)">
               <mat-icon>person_add</mat-icon>
             </a>
           </div>
@@ -59,7 +80,7 @@
               <mat-icon>archive</mat-icon>
             </a>
             <a mat-button *ngIf="note.archive" (click)="inArchive('unarchive',note)" routerLinkActive="active"
-              matTooltip="archive" title="archive">
+              matTooltip="archive" title="unarchive">
               <mat-icon>unarchive</mat-icon>
             </a>
           </div>
@@ -72,16 +93,17 @@
 
 
             <div>
-              <button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">Add Label</button>
+              <button mat-button [matMenuTriggerFor]="menu" (click)=labelFilter($event,note.labelList)>Add
+                Label</button>
               <mat-menu #menu="matMenu">
                 Label notes
                 <div fxLayout="row">
                   <mat-toolbar-row>
-                    <input type="input" placeholder="Seach for labels">
+                    <input type="input" placeholder="Seach for labels" (click)="$event.stopPropagation()">
                     <mat-icon> search</mat-icon>
                   </mat-toolbar-row>
                 </div>
-                <div *ngFor="let label of labels">
+                <div *ngFor="let label of newLabels">
                   <mat-checkbox (click)="addLabelToNote($event,label,note)">{{label.labelName}}</mat-checkbox>
                 </div>
               </mat-menu>

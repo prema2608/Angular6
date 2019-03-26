@@ -40,7 +40,11 @@ export class ListOfNotesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.service.updateNote(note, note.noteId)
+      console.log(note)
+      const data={note}
+      this.updateEvent.emit(data);
+      // this.service.updateNote(note, note.noteId).subscribe(resp=>
+      //   console.log("updated"))
     });
   }
 
@@ -144,48 +148,41 @@ export class ListOfNotesComponent implements OnInit {
     });
 }
 
+  public labelFilter(event, noteLabels) {
+    event.stopPropagation();
+    console.log(noteLabels);
+    console.log(this.labels);
+    this.newLabels.length = 0;
+    var k = 0;
+    for (var i = 0; i < this.labels.length; i++) {
+      var present = 0;
+      for (var j = 0; j < noteLabels.length; j++) {
+        if (this.labels[i].labelId === noteLabels[j].labelId && present === 0) {
+          present = 1;
+        }
+      }
+      if (present === 0) {
+        this.newLabels[k] = this.labels[i];
+        k++;
+      }
+    }
+  }
 
 
+
+  public updateReminder(note,selectedMoment)
+  {
+    note.remainder=selectedMoment;
+    console.log(note.remainder);
+    const data = { note }
+    this.updateEvent.emit(data);
+  }
+
+  public removeRemainder(note)
+  {
+    note.remainder=null;
+    console.log(note.remainder);
+    const data = { note }
+    this.updateEvent.emit(data);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // public labelFilter(event, noteLabels) {
-  //   event.stopPropagation();
-  //   console.log(noteLabels);
-  //   console.log(this.labels);
-  //   this.newLabels.length = 0;
-  //   var k = 0;
-  //   for (var i = 0; i < this.labels.length; i++) {
-  //     var present = 0;
-  //     for (var j = 0; j < noteLabels.length; j++) {
-  //       if (this.labels[i].labelId === noteLabels[j].labelId && present === 0) {
-  //         present = 1;
-  //       }
-  //     }
-  //     if (present === 0) {
-  //       this.newLabels[k] = this.labels[i];
-  //       k++;
-  //     }
-  //   }
-  // }\
-
-
+}
