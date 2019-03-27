@@ -139,6 +139,7 @@ export class ListOfNotesComponent implements OnInit {
   public dailogCollaborator(note) {
     const dialogRef = this.dialog.open(CollaboratorComponent, {
       width: '500px',
+      height:'500px',
       data: note
     });
     dialogRef.afterClosed().subscribe(result => {

@@ -5,14 +5,14 @@
   width: 25px;
 }
 
-// .mat-card-content 
-// {
-//   margin-left: -400px;
-// }
+.mat-card-content 
+{
+text-align: left;
+margin-left: 30px;}
 
 
 .mat-icon {
-    font-size: 20px;
+    font-size: 25px;
     padding:  10px;
   }
   .mat-button{
@@ -57,7 +57,6 @@
         justify-content: space-around;
         mat-card{
           width:560px;
-         
           border-radius: 20px;
           position: relative;
           box-shadow: 0 14px 28px rgba(110, 108, 108, 0.22), 0 10px 10px rgba(110, 108, 108, 0.22);

@@ -1,35 +1,71 @@
 <div [ngStyle]="{'background-color':data.color}">
-  <mat-label style="margin-left: 100px" for="title"><b>title </b></mat-label>
+  <!-- <mat-label style="margin-left: 100px; margin-top:5px" for="title"><b>title </b></mat-label> -->
   <mat-toolbar-row>
     <div>
-      <input style="margin-left: 100px;padding-top: 16px; background-color: transparent" matInput [(ngModel)]="data.title"
+      <input style="margin-left: 25px; background-color: transparent;border: none" matInput [(ngModel)]="data.title"
         [value]=data.title placeholder="Title">
     </div>
-    <div>
-      <a mat-button routerLinkActive="active" matTooltip="Remind me" title="pin notes">
-        <img src="./assets/images/pinn.jpg" style="height:25px;margin-left: 300px">
+    <div class="button">
+      <a mat-button class="margin" *ngIf="!data.pinned" (click)="pinned('pinned',data)" routerLinkActive="active"
+        matTooltip="colorize" title="pin note">
+        <img src="./assets/images/pinn.jpg" style="margin-left: 195px;height:25px">
+      </a>
+      <a mat-button class="margin" *ngIf="data.pinned" (click)="pinned('unpin',data)" routerLinkActive="active"
+        matTooltip="colorize" title="pin note">
+        <img src="./assets/images/pinn.jpg" style="margin-left: 195px;height:25px">
       </a>
     </div>
   </mat-toolbar-row>
   <br>
-  <mat-label style="margin-left: 100px " for="discription"><b>description</b></mat-label>
+  <!-- <mat-label style="margin-left: 100px " for="discription"><b>description</b></mat-label> -->
   <div>
-    <textarea style="margin-left: 100px;  background-color: transparent" matInput [(ngModel)]="data.description"
+    <textarea style="margin-left: 40px;    margin-top: -10px;  background-color: transparent;border: none" matInput [(ngModel)]="data.description"
       [value]=data.description placeholder="Discription"></textarea>
   </div>
 
+  <mat-chip-list #chipList>
+    <mat-chip *ngIf="data.remainder" [removable]="removable" (removed)="removeRemainder(data)" color="data.color">
+      <mat-icon>timer</mat-icon>
+      {{data.remainder| date:'short'}}
+      <mat-icon matChipRemove *ngIf="removable" title="remove label">cancel</mat-icon>
+    </mat-chip>
+
+    <mat-chip *ngFor="let label of data.labelList" [removable]="removable" (removed)="remove(data,label)"
+      color="data.color">
+      {{label.labelName}}
+      <mat-icon matChipRemove *ngIf="removable" title="remove label">cancel</mat-icon>
+    </mat-chip>
+  </mat-chip-list>
+
   <mat-toolbar-row>
+
     <div>
-      <a mat-button routerLinkActive="active" matTooltip="Remind me" title="Remind me">
-        <mat-icon>notification_important</mat-icon>
-      </a>
+      <button mat-icon-button matTooltip="Remind me" [matMenuTriggerFor]="remind" title="reminder">
+        <mat-icon>add_alert</mat-icon>
+      </button>
+
+      <mat-menu #remind="matMenu" class="morecard" (click)="$event.stopPropagation()">
+        <div class="input-wrapper">
+          <label>Add a reminder to note:</label>
+          <hr>
+          <input [min]="min" [(ngModel)]="selectedMoment" [owlDateTimeTrigger]="dtPicker1" [owlDateTime]="dtPicker1"
+            placeholder="select date and time">
+          <owl-date-time #dtPicker1></owl-date-time>
+        </div>
+        <div>
+          <button mat-button class="saveButton" (click)="updateReminder(data,selectedMoment)">Save</button>
+        </div>
+      </mat-menu>
     </div>
 
-    <div style="position:relative;display:block">
-      <a mat-button routerLinkActive="active" matTooltip="Collaborator" title="Collaborator">
+
+    <div>
+      <a mat-button routerLinkActive="active" matTooltip="Collaborator" title="Collaborator"
+        (click)="dailogCollaborator(data)" >
         <mat-icon>person_add</mat-icon>
       </a>
     </div>
+
 
     <app-color-palet [newNote]="data" (colorChange)="updateColor($event)"></app-color-palet>
 
@@ -50,18 +86,30 @@
       </a>
     </div>
 
+    <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="more" matTooltip="more"
+            title="more">
+            <i id="accountcircle" class="material-icons">more_vert</i></button>
+          <mat-menu #more="matMenu" class="morecard">
+            <button mat-button (click)="inTrash('inTrash',data)">Delete Note</button>
 
-    <!-- <div style="position:relative;display:block">
-      <a mat-button (click)="inArchive(data)" routerLinkActive="active" matTooltip="archive" title="archive">
-        <mat-icon>archive</mat-icon>
-      </a>
-    </div> -->
 
-    <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="more" matTooltip="more" title="more">
-      <i id="accountcircle" class="material-icons">more_vert</i></button>
-    <mat-menu #more="matMenu" class="morecard">
-      <button mat-button (click)=deleteNote(data)>Delete Note</button>
-    </mat-menu>
+            <div>
+              <button mat-button [matMenuTriggerFor]="menu" (click)=labelFilter($event,data.labelList)>Add
+                Label</button>
+              <mat-menu #menu="matMenu">
+                Label notes
+                <div fxLayout="row">
+                  <mat-toolbar-row>
+                    <input type="input" placeholder="Seach for labels" (click)="$event.stopPropagation()">
+                    <mat-icon> search</mat-icon>
+                  </mat-toolbar-row>
+                </div>
+                <div *ngFor="let label of newLabels">
+                  <mat-checkbox (click)="addLabelToNote($event,label,data)">{{label.labelName}}</mat-checkbox>
+                </div>
+              </mat-menu>
+            </div>
+          </mat-menu>
 
     <div style="position:relative;display:block">
       <a mat-button routerLinkActive="active" matTooltip="undo" title="undo">
@@ -75,7 +123,10 @@
     </div>
 
     <br>
-    <button mat-button (click)="updateNote(data,data.noteId)" style="float:right">Close</button>
+    <button mat-button (click)="updateNote(data,data.noteId)" (click)="closeClick()" style="float:right">Close</button>
 
   </mat-toolbar-row>
 </div>
+
+
+

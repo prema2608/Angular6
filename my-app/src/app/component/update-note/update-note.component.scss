@@ -10,8 +10,8 @@
     outline: none;
 }
 .matInput{
-    border: 0ch;
-    margin-left: 500px;
+  border: none;
+      margin-left: 500px;
     background-color: transparent;
 }
 .mat-icon {
@@ -25,12 +25,18 @@
     box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
     display: block;
     padding: 0px;
-    border-radius: 10px;
+    border-radius: 7px;
     box-sizing: border-box;
     overflow: hidden;
     outline: 0;
     width: 550px;
-    height: 210px;
+    height: 300px;
     min-height: inherit;
     max-height: inherit;
 }
+// .button{
+//   position: absolute;
+//   height: 25px;
+//   width: 25px;
+//   right: 1px;
+// }
