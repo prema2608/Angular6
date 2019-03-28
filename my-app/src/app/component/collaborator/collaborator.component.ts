@@ -3,7 +3,6 @@ import { FormControl } from '@angular/forms';
 import { User } from 'src/app/core/models/user';
 import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
 import { UserService } from 'src/app/core/services/user.service';
-import { Note } from 'src/app/core/models/note';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NoteService } from 'src/app/core/services/note.service';
 
@@ -76,23 +75,7 @@ import { NoteService } from 'src/app/core/services/note.service';
       this.dialogRef.close();
     }
   
-    // getImage() {
-    //   this.userService.downloadImage().subscribe(resp => {
-    //     this.user = resp
-    //     if (this.user.profilePicture != null) {
-    //       const url = `data:${this.user.contentType};base64,${this.user.profilePicture}`;
-    //       this.imageData = {
-    //         imageSrc: this.sanitizer.bypassSecurityTrustUrl(url)
-    //       }
-    //     }
-    //     else {
-    //       this.imageData.imageSrc = null;
-    //     }
-    //   }, error => {
-    //     this.snackBar.open("error to download image", "error", { duration: 2000 });
-    //   }
-    //   )
-    // }
+
   
     getCollaborateUser() {
       for (let i = 0; i < this.note.collaborators.length; i++) {

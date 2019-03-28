@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { NoteService } from 'src/app/core/services/note.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
-
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-create-note',
@@ -12,9 +12,10 @@ import { MatSnackBar } from '@angular/material';
 export class CreateNoteComponent implements OnInit {
   createNote: FormGroup;
   submitted = false;
- public showHeader = false;
+  public showHeader = false;
   token = localStorage.getItem('token')
   @Input() notes
+  @Output() updateEvent = new EventEmitter();
   constructor(private service: NoteService, private formBuilder: FormBuilder, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
@@ -40,18 +41,26 @@ export class CreateNoteComponent implements OnInit {
     if (this.createNote.invalid) {
       return;
     }
-    // if (this.createNote.value.title === "" && this.createNote.value.description === "") {
-    //   return;
-    // }
     console.log(this.token);
     console.log(note);
     this.service.createNote(note).subscribe(response => {
       this.retriveNotes();
-     this.snackbar.open("Note has been created successfully", "OK", {
+      this.snackbar.open("Note has been created successfully", "OK", {
         duration: 2000
       });
     })
   }
 
+  updateNote(note, noteId) {
+    //  console.log(note);
+    this.service.updateNote(note, noteId).subscribe(response => {
+      console.log("updated");
+    })
+  }
  
+  updateColor(data) {
+    this.updateNote(data.note, data.note.noteId)
+    // this.updateEvent.emit(data);
+  }
+
 }

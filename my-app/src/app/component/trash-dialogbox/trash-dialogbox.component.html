@@ -1,7 +1,7 @@
 
 <div class="container" fxLayout="column"   fxLayoutGap="3%" fxLayoutAlign="center center" >
   <div *ngFor="let note of notes" >
-      <mat-card style="width:350px;height: 170px" *ngIf="note.inTrash" style="width:250px;">
+      <mat-card style="width:200px;height: 170px" *ngIf="note.inTrash"[style.background-color]="note.color"  style="width:250px;">
         <mat-card-header>
           <mat-card-title (click)=openDialog(note)>
             {{note.title}}

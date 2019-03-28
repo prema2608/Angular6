@@ -26,7 +26,7 @@
         </div>
         <mat-chip-list #chipList>
           <mat-chip *ngIf="note.remainder" [removable]="removable" (removed)="removeRemainder(note)" color="note.color">
-            <mat-icon>timer</mat-icon>
+            <mat-icon>schedule</mat-icon>
             {{note.remainder| date:'short'}}
             <mat-icon matChipRemove *ngIf="removable" title="remove label">cancel</mat-icon>
           </mat-chip>

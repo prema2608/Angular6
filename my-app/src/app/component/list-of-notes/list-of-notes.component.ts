@@ -53,10 +53,6 @@ export class ListOfNotesComponent implements OnInit {
     console.log(note)
     const data = {key,note};
     this.updateEvent.emit(data);
-    // this.service.updateNote(note, note.noteId).subscribe(response => {
-      //this.retriveNotes();
-    //   console.log("updated");
-    // })
   }
   inArchive(key,note) {
     note.pinned = 0;
@@ -64,20 +60,14 @@ export class ListOfNotesComponent implements OnInit {
     console.log(note)
     const data = {key,note};
     this.updateEvent.emit(data);
-    // this.service.updateNote(note, note.noteId).subscribe(response => {
-    //   this.retriveNotes()
-    //   console.log("updated");
-    // })
+    
   }
   pinned(key,note) {
     note.pinned = key == 'pinned'? 1 : 0;
     console.log(note)
     const data = {key,note};
     this.updateEvent.emit(data);
-    // this.service.updateNote(note, note.noteId).subscribe(response => {
-    //   this.retriveNotes()
-    //   console.log("pinned");
-    // })
+   
   }
 
   public retriveNotes() {
@@ -113,10 +103,6 @@ export class ListOfNotesComponent implements OnInit {
     console.log(label);
     console.log(notes);
     this.service.mapLabelTONote(notes.noteId, label).subscribe((resp) => {
-      // const data = { notes }
-      // console.log(data)
-      // console.log(label)
-      // this.updateEvent.emit(data);
       this.retriveNotes();
     }
     )

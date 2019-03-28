@@ -8,11 +8,11 @@
     <div class="button">
       <a mat-button class="margin" *ngIf="!data.pinned" (click)="pinned('pinned',data)" routerLinkActive="active"
         matTooltip="colorize" title="pin note">
-        <img src="./assets/images/pinn.jpg" style="margin-left: 195px;height:25px">
+        <img src="./assets/images/pinn.jpg" style="margin-left: 240px;height:25px">
       </a>
       <a mat-button class="margin" *ngIf="data.pinned" (click)="pinned('unpin',data)" routerLinkActive="active"
         matTooltip="colorize" title="pin note">
-        <img src="./assets/images/pinn.jpg" style="margin-left: 195px;height:25px">
+        <img src="./assets/images/pinn.jpg" style="margin-left: 240px;height:25px">
       </a>
     </div>
   </mat-toolbar-row>
@@ -20,12 +20,12 @@
   <!-- <mat-label style="margin-left: 100px " for="discription"><b>description</b></mat-label> -->
   <div>
     <textarea style="margin-left: 40px;    margin-top: -10px;  background-color: transparent;border: none" matInput [(ngModel)]="data.description"
-      [value]=data.description placeholder="Discription"></textarea>
+      [value]=data.description placeholder="Description"></textarea>
   </div>
 
   <mat-chip-list #chipList>
     <mat-chip *ngIf="data.remainder" [removable]="removable" (removed)="removeRemainder(data)" color="data.color">
-      <mat-icon>timer</mat-icon>
+      <mat-icon>schedule</mat-icon>
       {{data.remainder| date:'short'}}
       <mat-icon matChipRemove *ngIf="removable" title="remove label">cancel</mat-icon>
     </mat-chip>
