@@ -1,6 +1,6 @@
-<div fxLayout="row" fxLayoutAlign="center center">
+<div fxLayout="row" fxLayoutAlign="center center"[style.background-color]="colo">
   <form [formGroup]="createNote">
-    <mat-accordion class="mat-accordion" [style.background-color]="color">
+    <mat-accordion class="mat-accordion" [style.background-color]="colo">
       <mat-expansion-panel [expanded]=false (opened)="showHeader = false" (closed)="showHeader = true"
         (closed)="onSubmit(createNote.value)" hideToggle="true">
         <mat-expansion-panel-header >

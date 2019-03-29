@@ -8,6 +8,8 @@ export class HelperClassService {
 
   public theme: Subject<any> = new Subject();
   public searchItem :Subject<any>=new Subject();
+  public color :Subject<any>=new Subject();
+
  
   
   constructor() { }
@@ -28,6 +30,15 @@ export class HelperClassService {
   public getSearchItem()
   {
     return this.searchItem;
+  }
+
+  public setColor(color:String)
+  {
+    return this.color;
+  }
+  public getColor()
+  {
+    return this.color;
   }
 
 

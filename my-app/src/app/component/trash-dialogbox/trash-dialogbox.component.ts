@@ -1,23 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { Component, OnInit, Input, Inject } from '@angular/core';
+import { MatDialog, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { NoteService } from 'src/app/core/services/note.service';
 import { Note } from 'src/app/core/models/note';
 
 @Component({
   selector: 'app-trash-dialogbox',
   templateUrl: './trash-dialogbox.component.html',
-  styleUrls: ['./trash-dialogbox.component.css']
+  styleUrls: ['./trash-dialogbox.component.scss']
 })
 export class TrashDialogboxComponent implements OnInit {
   constructor( private service: NoteService, private snackbar: MatSnackBar,
-    public dialog: MatDialog) { }
+    @Inject(MAT_DIALOG_DATA) public data,public dialog: MatDialog) { }
 
 
     notes: Note[] =[];
-  
+ 
 
   ngOnInit() {
-    this.retriveNotes();
+    //this.retriveNotes();
   }
 
   deleteNote(noteId) {
@@ -25,6 +25,7 @@ export class TrashDialogboxComponent implements OnInit {
     this.service.deleteNote(noteId).subscribe(response => {
       this.retriveNotes();
       this.snackbar.open('Note deleted successfully', 'OK', { duration: 2000 });
+      
     }),
       error => {
         console.log(error);

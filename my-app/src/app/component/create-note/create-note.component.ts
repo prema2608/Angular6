@@ -3,6 +3,7 @@ import { NoteService } from 'src/app/core/services/note.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { EventEmitter } from 'events';
+import { HelperClassService } from 'src/app/core/services/helper-class.service';
 
 @Component({
   selector: 'app-create-note',
@@ -16,7 +17,8 @@ export class CreateNoteComponent implements OnInit {
   token = localStorage.getItem('token')
   @Input() notes
   @Output() updateEvent = new EventEmitter();
-  constructor(private service: NoteService, private formBuilder: FormBuilder, private snackbar: MatSnackBar) { }
+  // @Input()colorss;
+  constructor(private service: NoteService, private helperClassService:HelperClassService,private formBuilder: FormBuilder, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
     this.retriveNotes();
@@ -59,6 +61,7 @@ export class CreateNoteComponent implements OnInit {
   }
  
   updateColor(data) {
+   let colo= this.helperClassService.getColor();
     this.updateNote(data.note, data.note.noteId)
     // this.updateEvent.emit(data);
   }
