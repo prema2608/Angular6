@@ -17,17 +17,17 @@
       <!-- label name -->
       &nbsp;&nbsp;&nbsp;&nbsp;
       <div>
-      <span>
-        <font size="1" face="arial">LABELS</font>
-      </span>
+        <span>
+          <font size="1" face="arial">LABELS</font>
+        </span>
 
-      <div *ngFor="let label of labels">
-        <button mat-menu-item>
-          <mat-icon> label_outline</mat-icon>
-          {{label.labelName}}
-        </button>
+        <div *ngFor="let label of labels">
+          <button mat-menu-item (click)="notesWithList(label,'home/label-display')">
+            <mat-icon> label_outline</mat-icon>
+            {{label.labelName}}
+          </button>
+        </div>
       </div>
-    </div>
       <!-- edit labels  -->
       <button mat-menu-item (click)=openDialog()>
         <mat-icon>edit</mat-icon>
@@ -37,7 +37,7 @@
       <!-- archive -->
       <button mat-menu-item [routerLink]="['/home/archive-note']">
         <!-- <mat-icon>archive</mat-icon> -->
-        <img class="image" src="./assets/images/outline-archive-24px.svg"/>
+        <img class="image" src="./assets/images/outline-archive-24px.svg" />
         <span>Archive</span>
       </button>
       <!-- delete -->

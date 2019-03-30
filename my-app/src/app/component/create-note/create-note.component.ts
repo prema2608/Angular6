@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, Inject } from '@angular/core';
 import { NoteService } from 'src/app/core/services/note.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { EventEmitter } from 'events';
 import { HelperClassService } from 'src/app/core/services/helper-class.service';
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
 
 @Component({
   selector: 'app-create-note',
@@ -18,13 +19,14 @@ export class CreateNoteComponent implements OnInit {
   @Input() notes
   @Output() updateEvent = new EventEmitter();
   // @Input()colorss;
-  constructor(private service: NoteService, private helperClassService:HelperClassService,private formBuilder: FormBuilder, private snackbar: MatSnackBar) { }
+  constructor(private service: NoteService, public dialog: MatDialog,private helperClassService:HelperClassService,private formBuilder: FormBuilder, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
     this.retriveNotes();
     this.createNote = this.formBuilder.group({
       title: ['', Validators.required],
-      description: ['', Validators.required]
+      description: ['', Validators.required],
+      remainder:''
     });
   }
   public retriveNotes() {
@@ -66,4 +68,25 @@ export class CreateNoteComponent implements OnInit {
     // this.updateEvent.emit(data);
   }
 
+
+//   public dailogCollaborator(note) {
+//     const dialogRef = this.dialog.open(CollaboratorComponent, {
+//       width: '500px',
+//       height:'500px',
+//       data: note
+//     });
+//     dialogRef.afterClosed().subscribe(result => {
+//       const data = { note }
+//       this.updateEvent.emit(data);
+//       console.log('The dialog was closed');
+//     });
+// // } 
+//  public removeRemainder(note)
+//   {
+//     note.remainder=null;
+//     console.log(note.remainder);
+//     const data = { note }
+
+//     this.updateEvent.emit(data);
+// }
 }

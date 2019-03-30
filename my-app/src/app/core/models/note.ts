@@ -10,7 +10,7 @@ export interface Note {
     noteId: string;
     userId: string;
     color:string;
-    labels:labels[];
+    labelList:labels[];
     remainder:string;
     collaborators:Collaborator[];
 

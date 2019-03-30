@@ -4,6 +4,7 @@ import { EditLabelsComponent } from '../edit-labels/edit-labels.component';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { labels } from 'src/app/core/models/labels';
 import { NoteService } from 'src/app/core/services/note.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-navibar',
@@ -15,7 +16,7 @@ export class SideNavibarComponent implements OnInit, OnDestroy
   @Input()//this is used to inject the parent class into child class
   parentSubject: Subject<any>;
 
-  constructor(public dialog: MatDialog, private service: NoteService,
+  constructor(public dialog: MatDialog, private router: Router,private service: NoteService,
     private snackbar: MatSnackBar) { }
 
   @ViewChild('drawer') public drawer;
@@ -51,5 +52,10 @@ export class SideNavibarComponent implements OnInit, OnDestroy
     });
   }
 
+
+  notesWithList(label,path)
+  {
+    this.router.navigate([path,label.labelName]);
+  }
 
 }

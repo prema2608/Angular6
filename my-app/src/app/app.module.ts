@@ -26,6 +26,7 @@ import { ReminderComponent } from './component/reminder/reminder.component';
 import { DynamicHoverDirective } from './directives/dynamic-hover.directive';
 import { CollaboratorComponent } from './component/collaborator/collaborator.component';
 import { UserfilterPipe } from './core/pipe/userfilter.pipe';
+import { LabelDisplayComponent } from './component/label-display/label-display.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { UserfilterPipe } from './core/pipe/userfilter.pipe';
     DynamicHoverDirective,
     CollaboratorComponent,
     UserfilterPipe,
+    LabelDisplayComponent,
 
     
   ],
